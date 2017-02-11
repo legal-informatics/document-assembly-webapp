@@ -1,0 +1,474 @@
+[{
+        "name": "Art 297 paragraph 2 of Criminal Code (road traffic safety)",
+        "rulebaseGoal": "committed_art297para2",
+        "templateFilename": "indictment_art297para2.tsl",
+        "Steps": [{
+                "text": "Defendant's name",
+                "ruleFact": "defendant",
+                "templateFact": "defendant",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's residence place",
+                "ruleFact": "",
+                "templateFact": "defendant_residence_place",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's residence address",
+                "ruleFact": "",
+                "templateFact": "defendant_residence_address",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's birthdate",
+                "ruleFact": "",
+                "templateFact": "defendant_birthdate",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Defendant's birthplace",
+                "ruleFact": "",
+                "templateFact": "defendant_birthplace",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's father",
+                "ruleFact": "",
+                "templateFact": "defendant_father",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's mother",
+                "ruleFact": "",
+                "templateFact": "defendant_mother",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's mother birthdate",
+                "ruleFact": "",
+                "templateFact": "defendant_mother_birthdate",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Defendant's citizenship",
+                "ruleFact": "",
+                "templateFact": "defendant_citizenship",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's family circumstances (e.g. single, married, how many children, etc.)",
+                "ruleFact": "",
+                "templateFact": "defendant_family_circumstances",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's occupation",
+                "ruleFact": "",
+                "templateFact": "defendant_occupation",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's personal ID number",
+                "ruleFact": "",
+                "templateFact": "defendant_personal_id_number",
+                "answer": null,
+                "answerType": "int"
+            }, {
+                "text": "Accident date",
+                "ruleFact": "",
+                "templateFact": "accident_date",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Accident time",
+                "ruleFact": "",
+                "templateFact": "accident_time",
+                "answer": null,
+                "answerType": "time"
+            }, {
+                "text": "Accident place",
+                "ruleFact": "",
+                "templateFact": "accident_place",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Accident address",
+                "ruleFact": "",
+                "templateFact": "accident_address",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's vehicle brand",
+                "ruleFact": "",
+                "templateFact": "vehicle_brand",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's vehicle model",
+                "ruleFact": "",
+                "templateFact": "vehicle_model",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's vehicle plates number",
+                "ruleFact": "",
+                "templateFact": "vehicle_plates",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's direction (from street)",
+                "ruleFact": "",
+                "templateFact": "direction_from_street",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's direction (to street)",
+                "ruleFact": "",
+                "templateFact": "direction_to_street",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's alcohol level",
+                "ruleFact": "alcohol_level",
+                "templateFact": "alcohol_level",
+                "answer": null,
+                "answerType": "float"
+            }, {
+                "text": "Defendant's speed",
+                "ruleFact": "speed",
+                "templateFact": "speed",
+                "answer": null,
+                "answerType": "int"
+            }, {
+                "text": "Damaged property",
+                "ruleFact": "property_damaged",
+                "templateFact": "property_damage",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Property damage value",
+                "ruleFact": "property_damage",
+                "templateFact": "property_damage",
+                "answer": null,
+                "answerType": "float"
+            }, {
+                "text": "Victim's body injuries [minor|grievous|death]",
+                "ruleFact": "victim_injuries",
+                "templateFact": "victim_injuries",
+                "answer": null,
+                "answerType": "enum(minor|grievous|death)"
+            }],
+        "RuleFacts": [{
+                "name": "defendant",
+                "type": "string"
+            }, {
+                "name": "speed",
+                "type": "int"
+            }, {
+                "name": "alcohol_level",
+                "type": "float"
+            }, {
+                "name": "property_damage",
+                "type": "float"
+            }, {
+                "name": "victim_injuries",
+                "type": "enum(minor,grievous,death)"
+            }, {
+                "name": "unsafe_distance",
+                "type": "boolean"
+            }, {
+                "name": "negligence",
+                "type": "boolean"
+            }],
+        "TemplateFacts": [{
+                "name": "defendant",
+                "type": "string"
+            }, {
+                "name": "defendant_residence_place",
+                "type": "string"
+            }, {
+                "name": "defendant_residence_address",
+                "type": "string"
+            }, {
+                "name": "defendant_birthdate",
+                "type": "date"
+            }, {
+                "name": "defendant_birthplace",
+                "type": "string"
+            }, {
+                "name": "defendant_father",
+                "type": "string"
+            }, {
+                "name": "defendant_mother",
+                "type": "string"
+            }, {
+                "name": "defendant_mother_birthdate",
+                "type": "date"
+            }, {
+                "name": "defendant_citizenship",
+                "type": "string"
+            }, {
+                "name": "defendant_family_circumstances",
+                "type": "string"
+            }, {
+                "name": "defendant_occupation",
+                "type": "string"
+            }, {
+                "name": "defendant_personal_id_number",
+                "type": "string"
+            }, {
+                "name": "accident_date",
+                "type": "date"
+            }, {
+                "name": "accident_time",
+                "type": "time"
+            }, {
+                "name": "accident_address",
+                "type": "string"
+            }, {
+                "name": "vehicle_brand",
+                "type": "string"
+            }, {
+                "name": "vehicle_model",
+                "type": "string"
+            }, {
+                "name": "vehicle_plates",
+                "type": "string"
+            }, {
+                "name": "direction_from_street",
+                "type": "string"
+            }, {
+                "name": "direction_to_street",
+                "type": "string"
+            }, {
+                "name": "speed",
+                "type": "int"
+            }, {
+                "name": "alcohol_level",
+                "type": "float"
+            }, {
+                "name": "property_damaged",
+                "type": "string"
+            }, {
+                "name": "property_damage",
+                "type": "float"
+            }, {
+                "name": "victim_injuries",
+                "type": "string"
+            }]
+    }, {
+        "name": "Art 246 of Criminal Code (narcotics)",
+        "rulebaseGoal": "committed_art246",
+        "templateFilename": "indictment_art246.tsl",
+        "Steps": [{
+                "text": "Defendant's name",
+                "ruleFact": "defendant",
+                "templateFact": "defendant",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Substance",
+                "ruleFact": "substance",
+                "templateFact": "substance",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Quantity (g)",
+                "ruleFact": "quantity",
+                "templateFact": "quantity",
+                "answer": null,
+                "answerType": "float"
+            }, {
+                "text": "Activity [produce|processes|possesses|sells|purchases|buying]",
+                "ruleFact": "activity",
+                "templateFact": "activity",
+                "answer": null,
+                "answerType": "enum(produce|processes|possesses|sells|purchases|buying)"
+            }, {
+                "text": "Defendant's father",
+                "ruleFact": "",
+                "templateFact": "defendant_father",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's mother",
+                "ruleFact": "",
+                "templateFact": "defendant_mother",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's mother birthdate",
+                "ruleFact": "",
+                "templateFact": "defendant_mother_birthdate",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Defendant's birthdate",
+                "ruleFact": "",
+                "templateFact": "defendant_birthdate",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Defendant's birthplace",
+                "ruleFact": "",
+                "templateFact": "defendant_birthplace",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's residence place",
+                "ruleFact": "",
+                "templateFact": "defendant_residence_place",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's residence address",
+                "ruleFact": "",
+                "templateFact": "defendant_residence_address",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's occupation",
+                "ruleFact": "",
+                "templateFact": "defendant_occupation",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's family circumstances (e.g. single, married, how many children, etc.)",
+                "ruleFact": "",
+                "templateFact": "defendant_family_circumstances",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's military service status [completed|not completed]",
+                "ruleFact": "",
+                "templateFact": "defendant_military_service",
+                "answer": null,
+                "answerType": "enum(completed|not completed)"
+            }, {
+                "text": "Defendant's citizenship",
+                "ruleFact": "",
+                "templateFact": "defendant_citizenship",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's ID card number",
+                "ruleFact": "",
+                "templateFact": "defendant_id_card_number",
+                "answer": null,
+                "answerType": "int"
+            }, {
+                "text": "Defendant's ID card issued by Police Administration (place)",
+                "ruleFact": "",
+                "templateFact": "defendant_id_card_issuer",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Defendant's personal ID number",
+                "ruleFact": "",
+                "templateFact": "defendant_personal_id_number",
+                "answer": null,
+                "answerType": "int"
+            }, {
+                "text": "Offence date",
+                "ruleFact": "",
+                "templateFact": "offence_date",
+                "answer": null,
+                "answerType": "date"
+            }, {
+                "text": "Offence time",
+                "ruleFact": "",
+                "templateFact": "offence_time",
+                "answer": null,
+                "answerType": "time"
+            }, {
+                "text": "Offence place",
+                "ruleFact": "",
+                "templateFact": "offence_place",
+                "answer": null,
+                "answerType": "string"
+            }, {
+                "text": "Offence address",
+                "ruleFact": "",
+                "templateFact": "offence_address",
+                "answer": null,
+                "answerType": "string"
+            }],
+        "RuleFacts": [{
+                "name": "defendant",
+                "type": "string"
+            }, {
+                "name": "substance",
+                "type": "string"
+            }, {
+                "name": "quantity",
+                "type": "float"
+            }, {
+                "name": "activity",
+                "type": "string"
+            }],
+        "TemplateFacts": [{
+                "name": "defendant",
+                "type": "string"
+            }, {
+                "name": "defendant_father",
+                "type": "string"
+            }, {
+                "name": "defendant_mother",
+                "type": "string"
+            }, {
+                "name": "defendant_mother_birthdate",
+                "type": "date"
+            }, {
+                "name": "defendant_birthdate",
+                "type": "date"
+            }, {
+                "name": "defendant_birthplace",
+                "type": "string"
+            }, {
+                "name": "defendant_residence_place",
+                "type": "string"
+            }, {
+                "name": "defendant_residence_address",
+                "type": "string"
+            }, {
+                "name": "defendant_occupation",
+                "type": "string"
+            }, {
+                "name": "defendant_family_circumstances",
+                "type": "string"
+            }, {
+                "name": "defendant_military_service",
+                "type": "string"
+            }, {
+                "name": "defendant_citizenship",
+                "type": "string"
+            }, {
+                "name": "defendant_id_card_number",
+                "type": "string"
+            }, {
+                "name": "defendant_id_card_issuer",
+                "type": "string"
+            }, {
+                "name": "defendant_personal_id_number",
+                "type": "string"
+            }, {
+                "name": "offence_date",
+                "type": "date"
+            }, {
+                "name": "offence_time",
+                "type": "time"
+            }, {
+                "name": "offence_place",
+                "type": "string"
+            }, {
+                "name": "offence_address",
+                "type": "string"
+            }, {
+                "name": "substance",
+                "type": "string"
+            }, {
+                "name": "quantity",
+                "type": "float"
+            }]
+    }]
