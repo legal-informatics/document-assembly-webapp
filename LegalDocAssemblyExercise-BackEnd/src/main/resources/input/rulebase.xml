@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ xsd-compact/lrml-compact.xsd" xmlns:ruleml="http://ruleml.org/spec">
+	<lrml:LegalReferences>
+		<lrml:LegalReference refersTo="ref_cc_art289para1" refID="/rs/2014-10-10/eng@/main#art289para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art289para3" refID="/rs/2014-10-10/eng@/main#art289para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para1" refID="/rs/2014-10-10/eng@/main#art297para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para2" refID="/rs/2014-10-10/eng@/main#art297para2" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para3" refID="/rs/2014-10-10/eng@/main#art297para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_bscs-1-2006-4-2008" refID="/rs/2006-04-17/eng@/main#art1item4" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art43" refID="/rs/2016-02-05/eng@/main#art43" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art82" refID="/rs/2016-02-05/eng@/main#art82" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art187para2" refID="/rs/2016-02-05/eng@/main#art187para2" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art187para3" refID="/rs/2016-02-05/eng@/main#art187para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art246para1" refID="/rs/2014-10-10/eng@/main#art246para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+	</lrml:LegalReferences>
+	<lrml:Associations>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art289para1"/>
+			<lrml:toTarget keyref="#cc_art289para1a"/>
+			<lrml:toTarget keyref="#cc_art289para1b"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art289para3"/>
+			<lrml:toTarget keyref="#cc_art289para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para1"/>
+			<lrml:toTarget keyref="#cc_art297para1"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_bscs-1-2006-4-2008"/>
+			<lrml:toTarget keyref="#bscs-1-2006-4-2008"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para2"/>
+			<lrml:toTarget keyref="#cc_art297para2"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para3"/>
+			<lrml:toTarget keyref="#cc_art297para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art43"/>
+			<lrml:toTarget keyref="#lorts_art43"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art82"/>
+			<lrml:toTarget keyref="#lorts_art82"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art187para2"/>
+			<lrml:toTarget keyref="#lorts_art187para2"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art187para3"/>
+			<lrml:toTarget keyref="#lorts_art187para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art246para1"/>
+			<lrml:toTarget keyref="#cc_art246para1a"/>
+			<lrml:toTarget keyref="#cc_art246para1b"/>
+			<lrml:toTarget keyref="#cc_art246para1c"/>
+			<lrml:toTarget keyref="#cc_art246para1d"/>
+			<lrml:toTarget keyref="#cc_art246para1e"/>
+			<lrml:toTarget keyref="#cc_art246para1f"/>
+			<lrml:toTarget keyref="#cc_art246para1g"/>
+			<lrml:toTarget keyref="#cc_art246para1h"/>
+			<lrml:toTarget keyref="#cc_art246para1i"/>
+			<lrml:toTarget keyref="#cc_art246para1j"/>
+		</lrml:Association>
+	</lrml:Associations>
+	<lrml:Statements>
+		<!-- ====================================================== -->
+		<!-- THE CRIMINAL CODE (endangering road traffic) -->
+		<lrml:PrescriptiveStatement key="ps_cc_art289para1a">
+			<ruleml:Rule key=":cc_art289para1a" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>traffic_violation</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:victim_injuries"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">minor</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art289para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art289para1b">
+			<ruleml:Rule key=":cc_art289para1b" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>traffic_violation</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":property_damage"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Var type="dd:property_damage">Damage</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Expr>
+								<ruleml:Fun>&gt;</ruleml:Fun>
+								<ruleml:Var>Damage</ruleml:Var>
+								<ruleml:Ind>200000</ruleml:Ind>
+							</ruleml:Expr>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art289para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art289para1">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>3 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art289para1"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art289para3"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_cc_art289para3">
+			<ruleml:Rule key=":cc_art289para3" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>committed_art289para1</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:negligence"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">yes</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art289para3</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art289para3">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>1 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art289para3"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art289para3"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_cc_art297para1">
+			<ruleml:Rule key=":cc_art297para1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>traffic_violation</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:victim_injuries"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">grievous</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art297para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art297para1">
+			<ruleml:Rule key=":cc_art297para1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>traffic_violation</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel>large_extent_property_damage</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art297para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_bscs-1-2006-4-2008">
+			<ruleml:Rule key=":bscs-1-2006-4-2008" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":property_damage"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Var type="dd:property_damage">Damage</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Expr>
+								<ruleml:Fun>&gt;</ruleml:Fun>
+								<ruleml:Var>Damage</ruleml:Var>
+								<ruleml:Ind>6000000</ruleml:Ind>
+							</ruleml:Expr>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>large_extent_property_damage</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art297para1">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>8 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art297para1"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art297para1"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_cc_art297para2">
+			<ruleml:Rule key=":cc_art297para2" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>traffic_violation</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:victim_injuries"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">death</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art297para2</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art297para2">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>12 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art297para2"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art297para2"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_cc_art297para3">
+			<ruleml:Rule key=":cc_art297para3" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>committed_art297para1</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:negligence"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">yes</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art297para3</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art297para3">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>4 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art297para3"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art297para3"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<!-- THE LAW ON ROAD TRAFFIC SAFETY -->
+		<lrml:PrescriptiveStatement key="ps_lorts_art82">
+			<ruleml:Rule key=":lorts_art82" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel iri="dd:unsafe_distance"/>
+						<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+						<ruleml:Data xsi:type="xs:string">yes</ruleml:Data>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>traffic_violation</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_lorts_art43a">
+			<ruleml:Rule key=":lorts_art43a" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel>excessive_speed_in_populated_area</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>traffic_violation</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_lorts_art43b">
+			<ruleml:Rule key=":lorts_art43b" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":speed"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Var type="dd:speed">Speed</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Expr>
+								<ruleml:Fun>&gt;</ruleml:Fun>
+								<ruleml:Var>Speed</ruleml:Var>
+								<ruleml:Ind>50</ruleml:Ind>
+							</ruleml:Expr>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>excessive_speed_in_populated_area</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_lorts_art187para2">
+			<ruleml:Rule key=":lorts_art187para2" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel>high_alcohol_level</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>traffic_violation</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_lorts_art187para3">
+			<ruleml:Rule key=":lorts_art187para3" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":alcohol_level"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Var type="dd:alcohol_level">Level</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Expr>
+								<ruleml:Fun>&gt;</ruleml:Fun>
+								<ruleml:Var>Level</ruleml:Var>
+								<ruleml:Ind>0.3</ruleml:Ind>
+							</ruleml:Expr>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>high_alcohol_level</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<!-- ====================================================== -->
+		<!-- THE CRIMINAL CODE (narcotics) -->
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1a">
+			<ruleml:Rule key=":cc_art246para1a" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">produce</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1b">
+			<ruleml:Rule key=":cc_art246para1b" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">processes</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1c">
+			<ruleml:Rule key=":cc_art246para1c" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">sells</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1d">
+			<ruleml:Rule key=":cc_art246para1d" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">offers_for_sale</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1e">
+			<ruleml:Rule key=":cc_art246para1e" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">purchases</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1f">
+			<ruleml:Rule key=":cc_art246para1f" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">keeps</ruleml:Data>
+							<ruleml:Var type="dd:quantity">Quantity</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1g">
+			<ruleml:Rule key=":cc_art246para1g" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">transports_for_sale</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1h">
+			<ruleml:Rule key=":cc_art246para1h" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">mediates_in_sale</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1i">
+			<ruleml:Rule key=":cc_art246para1i" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">buying</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_cc_art246para1j">
+			<ruleml:Rule key=":cc_art246para1j" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:activity"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">unlawfully_puts_into_circulation</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246para1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art246para1">
+			<lrml:SuborderList>
+<!--
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":min_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>3 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+-->
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>12 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art246para1"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1a"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1b"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1c"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1d"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1e"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1f"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1g"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1h"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1i"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1j"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ps_cc_art246apara1">
+			<ruleml:Rule key=":cc_art246apara1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+							<ruleml:Var>Defendant</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":keeps"/>
+							<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+							<ruleml:Var type="dd:substance">Substance</ruleml:Var>
+							<ruleml:Var type="dd:quantity">Quantity</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel iri=":smaller"/>
+							<ruleml:Var>Quantity</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>committed_art246apara1</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PenaltyStatement key="pen_cc_art246apara1">
+			<lrml:SuborderList>
+				<lrml:Obligation>
+					<ruleml:Atom>
+						<ruleml:Rel iri=":max_imprisonment"/>
+						<ruleml:Var>X</ruleml:Var>
+						<ruleml:Ind>3 years</ruleml:Ind>
+					</ruleml:Atom>
+				</lrml:Obligation>
+			</lrml:SuborderList>
+		</lrml:PenaltyStatement>
+		<lrml:ReparationStatement>
+			<lrml:Reparation>
+				<lrml:appliesPenalty keyref="#pen_cc_art246para1"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1a"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1b"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1c"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1d"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1e"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1f"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1g"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1h"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1i"/>
+				<lrml:toPrescriptiveStatement keyref="#ps_cc_art246para1j"/>
+			</lrml:Reparation>
+		</lrml:ReparationStatement>
+				<lrml:OverrideStatement>
+			<lrml:Override under="#ps_cc_art246para1f" over="#ps_cc_art246apara1"/>
+		</lrml:OverrideStatement>
+		<!-- ====================================================== -->
+		<!-- The Rulebook on Defining the List of Psychoactive Controlled Substances -->
+		<lrml:PrescriptiveStatement key="ps_rdlpcs_list1_num47">
+			<ruleml:Rule key=":ps_rdlpcs_list1_num47" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel iri="dd:substance"/>
+						<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+						<ruleml:Data xsi:type="xs:string">cannabis</ruleml:Data>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_rdlpcs_list1_num121">
+			<ruleml:Rule key=":ps_rdlpcs_list1_num121" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel iri="dd:substance"/>
+						<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+						<ruleml:Data xsi:type="xs:string">heroin</ruleml:Data>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ps_rdlpcs_list1_num54">
+			<ruleml:Rule key=":ps_rdlpcs_list1_num54" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:Atom>
+						<ruleml:Rel iri="dd:substance"/>
+						<ruleml:Var type="dd:defendant">Defendant</ruleml:Var>
+						<ruleml:Data xsi:type="xs:string">cocaine</ruleml:Data>
+					</ruleml:Atom>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>substance_is_narcotic</ruleml:Rel>
+						<ruleml:Var type=":defendant">Defendant</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<!-- ====================================================== -->
+	</lrml:Statements>
+</lrml:LegalRuleML>

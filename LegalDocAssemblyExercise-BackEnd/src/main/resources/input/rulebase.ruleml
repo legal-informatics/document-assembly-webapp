@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8"?><RuleML xmlns="http://www.ruleml.org/0.91/xsd" xmlns:dd="http://ftn.uns.ac.rs/legal/document-drafting" xmlns:ruleml="http://ruleml.org/spec" xmlns:test="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" proof="proof.ruleml" rdf_export="export.rdf" rdf_export_classes="committed_art246para1" rdf_import="&quot;facts.rdf&quot;">
+   <Assert>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art289para1a">cc_art289para1a</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>traffic_violation</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:victim_injuries</Ind>
+                     <Data xsi:type="xs:string">minor</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art289para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art289para1b">cc_art289para1b</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>traffic_violation</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:property_damage"/>
+                     <Var>Damage</Var>
+                  </slot>
+               </Atom>
+               <Equal>
+                  <Expr>
+                     <Fun in="yes">&gt;</Fun>
+                     <Var>Damage</Var>
+                     <Ind>200000</Ind>
+                  </Expr>
+               </Equal>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art289para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art289para3">cc_art289para3</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>committed_art289para1</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:negligence</Ind>
+                     <Data xsi:type="xs:string">yes</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art289para3</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art297para1">cc_art297para1</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>traffic_violation</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:victim_injuries</Ind>
+                     <Data xsi:type="xs:string">grievous</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art297para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art297para1">cc_art297para1</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>traffic_violation</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel>large_extent_property_damage</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art297para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="bscs-1-2006-4-2008">bscs-1-2006-4-2008</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:property_damage"/>
+                     <Var>Damage</Var>
+                  </slot>
+               </Atom>
+               <Equal>
+                  <Expr>
+                     <Fun in="yes">&gt;</Fun>
+                     <Var>Damage</Var>
+                     <Ind>6000000</Ind>
+                  </Expr>
+               </Equal>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>large_extent_property_damage</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art297para2">cc_art297para2</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>traffic_violation</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:victim_injuries</Ind>
+                     <Data xsi:type="xs:string">death</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art297para2</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art297para3">cc_art297para3</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>committed_art297para1</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:negligence</Ind>
+                     <Data xsi:type="xs:string">yes</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art297para3</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="lorts_art82">lorts_art82</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="dd:case"/>
+               </op>
+               <slot>
+                  <Ind uri="dd:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind>dd:unsafe_distance</Ind>
+                  <Data xsi:type="xs:string">yes</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>traffic_violation</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="lorts_art43a">lorts_art43a</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>excessive_speed_in_populated_area</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>traffic_violation</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="lorts_art43b">lorts_art43b</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:speed"/>
+                     <Var>Speed</Var>
+                  </slot>
+               </Atom>
+               <Equal>
+                  <Expr>
+                     <Fun in="yes">&gt;</Fun>
+                     <Var>Speed</Var>
+                     <Ind>50</Ind>
+                  </Expr>
+               </Equal>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>excessive_speed_in_populated_area</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="lorts_art187para2">lorts_art187para2</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>high_alcohol_level</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>traffic_violation</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="lorts_art187para3">lorts_art187para3</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:alcohol_level"/>
+                     <Var>Level</Var>
+                  </slot>
+               </Atom>
+               <Equal>
+                  <Expr>
+                     <Fun in="yes">&gt;</Fun>
+                     <Var>Level</Var>
+                     <Ind>0.3</Ind>
+                  </Expr>
+               </Equal>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>high_alcohol_level</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1a">cc_art246para1a</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">produce</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1b">cc_art246para1b</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">processes</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1c">cc_art246para1c</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">sells</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1d">cc_art246para1d</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">offers_for_sale</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1e">cc_art246para1e</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">purchases</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1f">cc_art246para1f</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:quantity"/>
+                     <Var>Quantity</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">keeps</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1g">cc_art246para1g</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">transports_for_sale</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1h">cc_art246para1h</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">mediates_in_sale</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1i">cc_art246para1i</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">buying</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246para1j">cc_art246para1j</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind>dd:activity</Ind>
+                     <Data xsi:type="xs:string">unlawfully_puts_into_circulation</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246para1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="cc_art246apara1">cc_art246apara1</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel>substance_is_narcotic</Rel>
+                  </op>
+                  <Var>Defendant</Var>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="dd:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:substance"/>
+                     <Var>Substance</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="dd:quantity"/>
+                     <Var>Quantity</Var>
+                  </slot>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="dd:case"/>
+                  </op>
+                  <Var>Quantity</Var>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>committed_art246apara1</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="ps_rdlpcs_list1_num47">ps_rdlpcs_list1_num47</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="dd:case"/>
+               </op>
+               <slot>
+                  <Ind uri="dd:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind>dd:substance</Ind>
+                  <Data xsi:type="xs:string">cannabis</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>substance_is_narcotic</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="ps_rdlpcs_list1_num121">ps_rdlpcs_list1_num121</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="dd:case"/>
+               </op>
+               <slot>
+                  <Ind uri="dd:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind>dd:substance</Ind>
+                  <Data xsi:type="xs:string">heroin</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>substance_is_narcotic</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="ps_rdlpcs_list1_num54">ps_rdlpcs_list1_num54</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="dd:case"/>
+               </op>
+               <slot>
+                  <Ind uri="dd:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind>dd:substance</Ind>
+                  <Data xsi:type="xs:string">cocaine</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>substance_is_narcotic</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+   </Assert>
+</RuleML>

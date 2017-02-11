@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tox-template SYSTEM "ToXgene2.dtd">
+<tox-template>
+    <tox-list name="fact_list" readFrom="facts.xml"><!--unique="fact/name"-->
+        <element name="fact">
+            <complexType>
+                <element name="name" type="string"/>
+                <element name="value" type="string"/>
+            </complexType>
+        </element>
+    </tox-list>
+
+    <simpleType name="key">
+        <restriction base="positiveInteger">
+            <tox-number sequential="yes"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="br.type.def">
+        <restriction base="string">
+            <pattern value=""/>
+        </restriction>
+    </simpleType>
+    
+    <complexType name="parties.type.def" mixed="true">
+        <tox-foreach path="[fact_list/fact]" where="EQ([name],'defendant')">
+            <element name="party">
+                <complexType>
+                    <attribute name="eId">
+                        <tox-expr value="'p'#~key"/>
+                    </attribute>
+                    <attribute name="refersTo">
+                        <tox-expr value="''"/>
+                    </attribute>
+                    <attribute name="as">
+                        <tox-expr value="'#defendant'"/>
+                    </attribute>
+                    <tox-expr value="[value]"/>
+                </complexType>
+            </element>
+            <tox-expr value="', '"/>
+        </tox-foreach>
+    </complexType>
+	
+    <complexType name="meta.type.def">
+        <element name="identification">
+            <complexType>
+                <attribute name="source">
+                    <tox-expr value="''"/>
+                </attribute>
+                <element name="FRBRWork">
+                    <complexType>
+                        <element name="FRBRthis">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRuri">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRdate">
+                            <complexType>
+                                <attribute name="date">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                                <attribute name="name">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRauthor">
+                            <complexType>
+                                <attribute name="href">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRcountry">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                    </complexType>
+                </element>
+                <element name="FRBRExpression">
+                    <complexType>
+                        <element name="FRBRthis">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRuri">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRdate">
+                            <complexType>
+                                <attribute name="date">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                                <attribute name="name">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRauthor">
+                            <complexType>
+                                <attribute name="href">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRlanguage">
+                            <complexType>
+                                <attribute name="language">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                    </complexType>
+                </element>
+                <element name="FRBRManifestation">
+                    <complexType>
+                        <element name="FRBRthis">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRuri">
+                            <complexType>
+                                <attribute name="value">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRdate">
+                            <complexType>
+                                <attribute name="date">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                                <attribute name="name">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                        <element name="FRBRauthor">
+                            <complexType>
+                                <attribute name="href">
+                                    <tox-expr value="''"/>
+                                </attribute>
+                            </complexType>
+                        </element>
+                    </complexType>
+                </element>
+            </complexType>
+        </element>
+        <element name="references">
+            <complexType>
+                <attribute name="source">
+                    <tox-expr value="''"/>
+                </attribute>
+                <element name="original">
+                    <complexType>
+                        <attribute name="href">
+                            <tox-expr value="''"/>
+                        </attribute>
+                        <attribute name="showAs">
+                            <tox-expr value="''"/>
+                        </attribute>
+                    </complexType>
+                </element>
+            </complexType>
+        </element>
+    </complexType>
+    <complexType name="preface.type.def">
+    </complexType>
+    <complexType name="mainBody.type.def" mixed="true">
+        <element name="p">
+            <complexType>
+                <element name="div">
+                    <complexType>
+                        <tox-value>Republic of Serbia</tox-value>
+                    </complexType>
+                </element>
+                <element name="div">
+                    <complexType>
+                        <tox-value>High Public Prosecutor's Office in Novi Sad</tox-value>
+                    </complexType>
+                </element>
+                <element name="div">
+                    <complexType>
+                        <tox-value>No. KTI 21/16</tox-value>
+                    </complexType>
+                </element>
+                <element name="div">
+                    <complexType>
+                        <tox-value>Date: 25.04.2016.</tox-value>
+                    </complexType>
+                </element>
+                <element name="div">
+                    <complexType>
+                        <tox-value>Novi Sad</tox-value>
+                    </complexType>
+                </element>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <attribute name="style">
+                    <tox-expr value="'text-align: center;'"/>
+                </attribute>
+                <tox-value>High Court in Novi Sad</tox-value>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <tox-value>panel from art. 21 par. 4 Criminal Procedure Code</tox-value>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <tox-value>Pursuant to article 43 paragraph 2 item 5 of the Criminal Procedure Code and according to article 331 paragraph 1 of the Criminal Procedure Code, I submits</tox-value>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <attribute name="style">
+                    <tox-expr value="'text-align: center;'"/>
+                </attribute>
+                <tox-value>Indictment</tox-value>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <tox-value>against </tox-value>
+                <!--
+                <element name="block" type="parties.type.def"/>
+                -->
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, from </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_residence_place')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, address </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_residence_address')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, born on </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_birthdate')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> in </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_birthplace')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, from father </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_father')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> and mother </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_mother')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> born on </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_mother_birthdate')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, citizen of the </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_citizenship')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_family_circumstances')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_occupation')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, personal ID number </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'defendant_personal_id_number')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <tox-value>because of justified suspicion that:</tox-value>
+            </complexType>
+        </element>
+        <element name="p">
+            <complexType>
+                <tox-value>on </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'accident_date')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, at </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'accident_time')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, in </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'accident_place')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, address </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'accident_address')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value>, participating in public traffic, capable to comprehend the significance of his action and to control his actions and aware that his action was prohibited, deliberately wanted it committed, </tox-value>
+                <tox-value>caused traffic accident, driving the vehicle </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'vehicle_brand')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> model </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'vehicle_model')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> plates number </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'vehicle_plates')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> and caused </tox-value>
+                <tox-sample path="[fact_list/fact]" where="EQ([name],'victim_injuries')" duplicates="no">
+                    <tox-expr value="[value]"/>
+                </tox-sample>
+                <tox-value> bodily injuries.</tox-value>
+            </complexType>
+        </element>
+		
+    </complexType>
+    <complexType name="conclusions.type.def">
+    </complexType>
+    <tox-document name="indictment-document">
+        <element name="akomaNtoso">
+            <complexType>
+                <element name="doc">
+                    <complexType>
+                        <element name="meta" type="meta.type.def" maxOccurs="1"/>
+                        <element name="preface" type="preface.type.def" maxOccurs="1"/>
+                        <element name="mainBody" type="mainBody.type.def" maxOccurs="1"/>
+                        <element name="conclusions" type="conclusions.type.def" maxOccurs="1"/>
+                    </complexType>
+                </element>
+            </complexType>
+        </element>
+    </tox-document>
+</tox-template>

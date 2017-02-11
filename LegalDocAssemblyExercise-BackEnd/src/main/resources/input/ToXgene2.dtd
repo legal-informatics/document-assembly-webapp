@@ -1,0 +1,193 @@
+<!ELEMENT tox-template (tox-distribution|simpleType|complexType|tox-list|
+                        tox-document)*>
+
+ <!-- ***********************************************************
+      XML Schema definitions needed
+      *********************************************************** -->
+
+ <!-- Just a copy of what's in the XML Schema specifications -->
+
+ <!ELEMENT simpleType (restriction)>
+ <!ATTLIST simpleType name CDATA #IMPLIED>
+
+ <!-- tox-string, tox-number and tox-value are all "literals", thus can go
+ inside a restriction definition -->
+
+ <!ELEMENT restriction ((tox-value | pattern) |
+                        ((minLength |maxLength)*,tox-string) |
+                        ((minInclusive | maxInclusive | minExclusive | 
+                          maxExclusive | tox-format)*, (tox-number|tox-date)?) |
+                        (tox-scan|tox-sample|tox-foreach))>
+
+ <!-- Here we have ALL 45 XML Schema datatypes! -->
+ <!ATTLIST restriction base (string|integer|long|unsignedLong|int|unsignedInt|
+                             short|byte|nonNegativeInteger|positiveInteger|
+                             nonPositiveInteger|negativeInteger|decimal|
+                             float|double|date) #REQUIRED>
+
+ <!ELEMENT pattern EMPTY>
+ <!ATTLIST pattern value CDATA #REQUIRED>
+
+ <!ELEMENT minInclusive EMPTY>
+ <!ATTLIST minInclusive value CDATA #REQUIRED>
+
+ <!ELEMENT maxInclusive EMPTY>
+ <!ATTLIST maxInclusive value CDATA #REQUIRED>
+
+ <!ELEMENT minExclusive EMPTY>
+ <!ATTLIST minExclusive value CDATA #REQUIRED>
+
+ <!ELEMENT maxExclusive EMPTY>
+ <!ATTLIST maxExclusive value CDATA #REQUIRED>
+
+ <!ELEMENT minLength EMPTY>
+ <!ATTLIST minLength value CDATA #REQUIRED>
+
+ <!ELEMENT maxLength EMPTY>
+ <!ATTLIST maxLength value CDATA #REQUIRED>
+
+ <!ELEMENT tox-format EMPTY>
+ <!ATTLIST tox-format value CDATA #REQUIRED>
+
+ <!-- The tox-percent gives the probability of that particular element being
+ chose from the list -->
+
+ <!ELEMENT enumeration EMPTY>
+ <!ATTLIST enumeration value CDATA #REQUIRED
+                       tox-percent CDATA #REQUIRED>
+
+ <!-- This is an simplified version of the XML Schema definition of element,
+ but this will do for our needs -->
+
+ <!ELEMENT complexType ((tox-alternatives|tox-scan|tox-sample|tox-foreach|
+                         tox-if|attribute|element|tox-string|tox-number|
+                         tox-value|tox-expr)*)>
+ <!ATTLIST complexType name CDATA #IMPLIED
+                       mixed (true|false) 'false'>
+
+ <!-- These elements are like the XML Schema elements, and are used to define
+ data types and tox-files -->
+
+ <!ELEMENT element ((simpleType|complexType|tox-expr*)?)>
+ <!ATTLIST element name CDATA #REQUIRED
+                   type CDATA #IMPLIED
+                   minOccurs CDATA '1'
+                   maxOccurs CDATA '1'
+                   tox-distribution IDREF #IMPLIED
+                   tox-recursionLevels CDATA #IMPLIED
+                   tox-reset (yes|no) 'no'
+                   tox-omitTag (yes|no) 'no'>
+
+ <!ELEMENT attribute (tox-expr|simpleType)>
+ <!ATTLIST attribute name CDATA #REQUIRED 
+                     type CDATA #IMPLIED
+                     tox-minOccurs CDATA '1'
+                     tox-maxOccurs CDATA '1'
+                     tox-distribution IDREF #IMPLIED
+                     separator CDATA #IMPLIED>
+
+ <!-- *****************************************************************
+      ToXgene specific elements
+      ***************************************************************** -->
+
+ <!-- elements for defining skewed value distributions -->
+
+ <!ELEMENT tox-distribution (enumeration*)>
+ <!ATTLIST tox-distribution name ID #REQUIRED
+                            type (constant | exponential | geometric | 
+                            lognormal | normal | uniform | user-defined) 
+                            'uniform'
+                            minInclusive CDATA #REQUIRED
+                            maxInclusive CDATA #REQUIRED
+                            mean CDATA #IMPLIED
+                            variance CDATA #IMPLIED>
+
+ <!-- These define string literals -->
+
+ <!ELEMENT tox-string EMPTY>
+ <!ATTLIST tox-string type CDATA 'gibberish'
+                      minLength CDATA #IMPLIED
+                      maxLength CDATA #IMPLIED
+                      tox-distribution IDREF #IMPLIED>
+
+ <!-- These define numeric literals. This element will be extended in the
+ future to add things like different formattings for the numbers, according
+ to the XML Schema definitions for numeric datatypes. -->
+ 
+ <!ELEMENT tox-number EMPTY>
+ <!ATTLIST tox-number minInclusive CDATA #IMPLIED
+                      maxInclusive CDATA #IMPLIED
+                      tox-distribution IDREF #IMPLIED
+                      sequential (yes|no) 'no'
+                      format CDATA #IMPLIED>
+
+ <!-- These elements define date literals -->
+ <!ELEMENT tox-date EMPTY>
+ <!ATTLIST tox-date start-date CDATA #REQUIRED
+                    end-date CDATA #REQUIRED
+                    tox-distribution IDREF #IMPLIED
+                    format CDATA #IMPLIED>
+
+ <!-- The tox-value element is used to specify user-defined constants -->
+ <!ELEMENT tox-value (#PCDATA)>
+
+ <!-- A tox list is a repository for literals that are shared by the files
+ in the template -->
+
+ <!ELEMENT tox-list (element)>
+ <!ATTLIST tox-list name ID #REQUIRED
+                    unique CDATA #IMPLIED
+                    where CDATA #IMPLIED
+                    readFrom CDATA #IMPLIED
+                    abort (yes|no) 'no'
+                    dump (yes|no) 'no'>
+
+ <!ELEMENT tox-alternatives (tox-option*)>
+ <!ATTLIST tox-alternatives tox-distribution IDREF #IMPLIED>
+ 
+ <!ELEMENT tox-option ((attribute|element|tox-if|tox-alternatives|tox-expr|
+                        tox-string)*)>
+ <!ATTLIST tox-option odds CDATA #REQUIRED>
+
+ <!-- These elements implement ToXgene's query language -->
+
+ <!ELEMENT tox-scan ((tox-scan|tox-sample|tox-foreach|tox-expr|attribute|element|
+                      tox-if|tox-alternatives)*)>
+ <!ATTLIST tox-scan path CDATA #REQUIRED
+                    name CDATA #IMPLIED
+                    where CDATA #IMPLIED>
+
+ <!ELEMENT tox-sample (((tox-scan|tox-sample|tox-foreach|tox-expr)*)|
+                        (attribute|element)*)>
+ <!ATTLIST tox-sample path CDATA #REQUIRED
+                      name CDATA #IMPLIED
+                      where CDATA #IMPLIED
+                      tox-distribution IDREF #IMPLIED
+                      duplicates (yes|no) 'yes'>
+
+ <!-- this element allows the nesting of content -->
+ <!ELEMENT tox-foreach ((tox-scan|tox-sample|tox-foreach|tox-expr|attribute|element|
+                        tox-if|tox-alternatives)*)>
+ <!ATTLIST tox-foreach path CDATA #REQUIRED
+                       name CDATA #IMPLIED
+                       where CDATA #IMPLIED>
+
+ <!ELEMENT tox-expr EMPTY>
+ <!ATTLIST tox-expr value CDATA #REQUIRED
+                    format CDATA #IMPLIED>
+
+ <!ELEMENT tox-if (tox-then, tox-else?)>
+ <!ATTLIST tox-if expr CDATA #REQUIRED>
+ <!ELEMENT tox-then (tox-alternatives|tox-scan|tox-sample|tox-foreach|tox-if|
+                     element|attribute)*>
+ <!ELEMENT tox-else (tox-alternatives|tox-scan|tox-sample|tox-foreach|tox-if|
+                     element|attribute)*>
+
+ <!-- This element defines the actual XML documents that are generated. -->
+
+ <!ELEMENT tox-document (element)>
+ <!ATTLIST tox-document name CDATA #REQUIRED
+                        copies CDATA '1'
+                        starting-number CDATA '0'
+                        DTD-file CDATA #IMPLIED
+                        pad (yes|no) 'no'> 

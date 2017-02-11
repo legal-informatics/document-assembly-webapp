@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExplanatoryMaterial id="cpc_art500">
+    <title>Criminal Procedure Code (Article 500)</title>
+    <content><![CDATA[
+        <p style="text-align: center">
+            Contents of a Charging Document<br/>
+            Article 500
+        </p>
+        <p style="text-align: justify">
+            A motion to indict, or a private lawsuit, contains the following:<br/>
+            1) first name and surname of the defendant with personal data, if known;<br/>
+            2) brief description of the offence;<br/>
+            3) statutory name of the criminal offence;<br/>
+            4) name of the court before which the trial is to be held;<br/>
+            5) proposal of the evidence to be presented at the trial, specifying the facts which are to
+            be proved and with which of the proposed pieces of evidence;<br/>
+            6) proposal of the type and severity of the criminal sanction and measure whose
+            imposition is being sought.<br/>
+            A motion to indict, or a private lawsuit may contain a motion to place the defendant in
+            detention, and if the defendant was in detention during the implementation of evidentiary
+            actions, the motion to indict shall specify the time spent in detention.<br/>
+            If on the basis of collected evidence the public prosecutor deems that a trial is
+            unnecessary, he may request in the motion to indict that a hearing for the imposition of a
+            criminal sanction (Article 512) be scheduled.
+        </p>
+    ]]>
+    </content>
+</ExplanatoryMaterial>
