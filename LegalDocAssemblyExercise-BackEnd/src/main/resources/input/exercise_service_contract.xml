@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Exercise name="Service Contract" rulebaseGoal="net_cost" templateFilename="service_contract.tsl">
+    <RuleFacts>
+        <RuleFact name="service_provider" type="string"/>
+        <RuleFact name="gross_cost" type="float"/>
+        <RuleFact name="service_provider_has_employment" type="string"/>
+    </RuleFacts>
+    <TemplateFacts>
+		<TemplateFact name="service_provider" type="string"/>
+        <TemplateFact name="gross_cost" type="float"/>
+        <TemplateFact name="service_provider_has_employment" type="string"/>
+		<TemplateFact name="service_provider_id" type="string"/>
+		<TemplateFact name="service_provider_address" type="string"/>
+		<TemplateFact name="services" type="string"/>
+		<TemplateFact name="services_ending_date" type="string"/>
+		<TemplateFact name="compensation_days" type="int"/>
+    </TemplateFacts>
+    <Steps>
+        <Step ruleFact="service_provider" templateFact="service_provider" answerType="string" text="Service provider name" hint="e.g. John Doe">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="gross_cost" templateFact="gross_cost" answerType="float" text="Gross cost" hint="0.00">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="service_provider_has_employment" templateFact="service_provider_has_employment" answerType="string" text="Service provider has employment" hint="yes/no">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="" templateFact="service_provider_id" answerType="string" text="Service provider id number" hint="">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="" templateFact="service_provider_address" answerType="string" text="Service provider address" hint="">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="" templateFact="services" answerType="string" text="Services description" hint="">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="" templateFact="services_ending_date" answerType="string" text="Final date to provide services" hint="dd.mm.yyyy.">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+        <Step ruleFact="" templateFact="compensation_days" answerType="int" text="Num. of days for compensation" hint="">
+            <StepExplanations ref="explanatory_ll_art199.xml"/>
+        </Step>
+    </Steps>
+</Exercise>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tox-template SYSTEM "ToXgene2.dtd">
+<tox-template>
+	<tox-list name="fact_list" readFrom="facts.xml">
+		<element name="fact">
+			<complexType>
+				<element name="name" type="string"/>
+				<element name="value" type="string"/>
+			</complexType>
+		</element>
+	</tox-list>
+
+	<simpleType name="key">
+		<restriction base="positiveInteger">
+			<tox-number sequential="yes"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="meta.type.def">
+		<element name="identification">
+			<complexType>
+				<attribute name="source">
+					<tox-expr value="''"/>
+				</attribute>
+				<element name="FRBRWork">
+					<complexType>
+						<element name="FRBRthis">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRuri">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRdate">
+							<complexType>
+								<attribute name="date">
+									<tox-expr value="''"/>
+								</attribute>
+								<attribute name="name">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRauthor">
+							<complexType>
+								<attribute name="href">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRcountry">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+					</complexType>
+				</element>
+				<element name="FRBRExpression">
+					<complexType>
+						<element name="FRBRthis">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRuri">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRdate">
+							<complexType>
+								<attribute name="date">
+									<tox-expr value="''"/>
+								</attribute>
+								<attribute name="name">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRauthor">
+							<complexType>
+								<attribute name="href">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRlanguage">
+							<complexType>
+								<attribute name="language">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+					</complexType>
+				</element>
+				<element name="FRBRManifestation">
+					<complexType>
+						<element name="FRBRthis">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRuri">
+							<complexType>
+								<attribute name="value">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRdate">
+							<complexType>
+								<attribute name="date">
+									<tox-expr value="''"/>
+								</attribute>
+								<attribute name="name">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+						<element name="FRBRauthor">
+							<complexType>
+								<attribute name="href">
+									<tox-expr value="''"/>
+								</attribute>
+							</complexType>
+						</element>
+					</complexType>
+				</element>
+			</complexType>
+		</element>
+		<element name="references">
+			<complexType>
+				<attribute name="source">
+					<tox-expr value="''"/>
+				</attribute>
+				<element name="original">
+					<complexType>
+						<attribute name="href">
+							<tox-expr value="''"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="''"/>
+						</attribute>
+					</complexType>
+				</element>
+				<element name="TLCRole">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'client'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/role/client'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'Client'"/>
+						</attribute>
+					</complexType>
+				</element>
+				<element name="TLCRole">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'service_provider'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/role/service_provider'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'Service Provider'"/>
+						</attribute>
+					</complexType>
+				</element>
+				<element name="TLCOrganization">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'ftn'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/organization/rs.uns.ftn'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'FTN'"/>
+						</attribute>
+					</complexType>
+				</element>
+				<!--
+				<element name="TLCPerson">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'service_provider'"/>
+						</attribute>
+						<attribute name="href">
+							<simpleType>
+								<restriction base="string">
+								<tox-sample path="[fact_list/fact]" where="EQ([name],'net_cost:amount')" duplicates="no">
+									<tox-expr value="'/ontology/persons/rs/'#[value]"/>
+								</tox-sample>
+								</restriction>
+							</simpleType>
+						</attribute>
+						<attribute name="showAs">
+							<simpleType>
+								<restriction base="string">
+									<tox-sample path="[fact_list/fact]" where="EQ([name],'net_cost:amount')" duplicates="no">
+										<tox-expr value="[value]"/>
+									</tox-sample>
+								</restriction>
+							</simpleType>
+						</attribute>
+					</complexType>
+				</element>
+				-->
+				<element name="TLCLocation">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'ns'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/location/rs/ns'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'Novi Sad'"/>
+						</attribute>
+					</complexType>
+				</element>
+				<element name="TLCConcept">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'gross'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/concept/gross_value'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'Gross value'"/>
+						</attribute>
+					</complexType>
+				</element>
+				<element name="TLCConcept">
+					<complexType>
+						<attribute name="id">
+							<tox-expr value="'net'"/>
+						</attribute>
+						<attribute name="href">
+							<tox-expr value="'/ontology/concept/net_value'"/>
+						</attribute>
+						<attribute name="showAs">
+							<tox-expr value="'Net value'"/>
+						</attribute>
+					</complexType>
+				</element>
+				
+			</complexType>
+		</element>
+	</complexType>
+
+	<complexType name="preface.type.def">
+	</complexType>
+	<complexType name="p.type.def" mixed="true">
+	</complexType>
+	
+	<simpleType name="gross_cost">
+		<restriction base="string">
+			<tox-sample path="[fact_list/fact]" where="EQ([name],'gross_cost')" duplicates="no">
+				<tox-expr value="[value]"/>
+			</tox-sample>
+		</restriction>
+	</simpleType>
+
+	<complexType name="mainBody.type.def" mixed="true">
+		<element name="p">
+			<complexType>
+				<tox-value>Pursuant to article 199 of the Labour Law ("Official Gazette of the Republic of Serbia" No. 95/2018), </tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<attribute name="style">
+					<tox-expr value="'text-align: center; font-size: 150%; font-weight: bold;'"/>
+				</attribute>
+				<tox-value>The Service Contract</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType mixed="true">
+				<tox-value>is concluded between </tox-value>
+				<element name="party">
+					<complexType>
+						<attribute name="eId">
+							<tox-expr value="'p'#~key"/>
+						</attribute>
+						<attribute name="refersTo">
+							<tox-expr value="'#ftn'"/>
+						</attribute>
+						<attribute name="as">
+							<tox-expr value="'#client'"/>
+						</attribute>
+						<tox-value>Faculty of Technical Sciences"</tox-value>
+					</complexType>
+				</element>
+				<tox-value> from </tox-value>
+				<element name="location">
+					<complexType>
+						<attribute name="eId">
+							<tox-expr value="'p'#~key"/>
+						</attribute>
+						<attribute name="refersTo">
+							<tox-expr value="'#ns'"/>
+						</attribute>
+						<tox-value>Novi Sad</tox-value>
+					</complexType>
+				</element>
+				<tox-value> (the Client) and </tox-value>
+				<!--
+				<element name="party">
+					<complexType>
+						<attribute name="eId">
+							<tox-expr value="'p'#~key"/>
+						</attribute>
+						<attribute name="refersTo">
+							<tox-expr value="'#ftn'"/>
+						</attribute>
+						<attribute name="as">
+							<tox-expr value="'#service_provider'"/>
+						</attribute>
+						<tox-sample path="[fact_list/fact]" where="EQ([name],'service_provider')" duplicates="no">
+							<tox-expr value="[value]"/>
+						</tox-sample>
+					</complexType>
+				</element>
+				-->
+				<!--
+				<tox-sample path="[fact_list/fact]" where="EQ([name],'service_provider_city')" duplicates="no">
+					<tox-expr value="[value]"/>
+				</tox-sample>
+				-->
+				<tox-sample path="[fact_list/fact]" where="EQ([name],'service_provider_address')" duplicates="no">
+					<tox-expr value="[value]"/>
+				</tox-sample>
+				<tox-value> (the Service Provider).</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<attribute name="style">
+					<tox-expr value="'text-align: center;'"/>
+				</attribute>
+				<tox-value>Article 1.</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<tox-value>The Service Provider obliges to provide services in </tox-value>
+				<tox-sample path="[fact_list/fact]" where="EQ([name],'services')" duplicates="no">
+					<tox-expr value="[value]"/>
+				</tox-sample>
+				<tox-value> until </tox-value>
+				<tox-sample path="[fact_list/fact]" where="EQ([name],'services_ending_date')" duplicates="no">
+					<tox-expr value="[value]"/>
+				</tox-sample>
+				<tox-value>.</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<attribute name="style">
+					<tox-expr value="'text-align: center;'"/>
+				</attribute>
+				<tox-value>Article 2.</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType mixed="true">
+				<tox-value>The Client obliges to pay for services a gross amount of </tox-value>
+				<element name="quantity">
+					<complexType>
+						<attribute name="eId">
+							<tox-expr value="'q'#~key"/>
+						</attribute>
+						<attribute name="normalized">
+							<simpleType>
+								<restriction base="string">
+									<tox-sample path="[fact_list/fact]" where="EQ([name],'gross_cost')" duplicates="no">
+										<tox-expr value="[value]"/>
+									</tox-sample>
+								</restriction>
+							</simpleType>
+						</attribute>
+						<attribute name="refersTo">
+							<tox-expr value="'#gross'"/>
+						</attribute>
+						<tox-sample path="[fact_list/fact]" where="EQ([name],'gross_cost')" duplicates="no">
+							<tox-expr value="[value]"/>
+						</tox-sample>
+					</complexType>
+				</element>
+				<tox-value> in </tox-value>
+				<tox-sample path="[fact_list/fact]" where="EQ([name],'compensation_days')" duplicates="no">
+					<tox-expr value="[value]"/>
+				</tox-sample>
+				<tox-value> days after satisfactory fullfilment of all obligations. Besides paying for contributions, the Client obliges to pay Service Provider net amount of </tox-value>
+<!--
+				<element name="quantity">
+					<complexType>
+						<attribute name="eId">
+							<tox-expr value="'q'#~key"/>
+						</attribute>
+						<attribute name="normalized">
+							<tox-sample path="[fact_list/fact]" where="EQ([name],'net_cost:amount')" duplicates="no">
+								<tox-expr value="[value]"/>
+							</tox-sample>
+						</attribute>
+						<attribute name="refersTo">
+							<tox-expr value="'#net'"/>
+						</attribute>
+						<tox-sample path="[fact_list/fact]" where="EQ([name],'net_cost:amount')" duplicates="no">
+							<tox-expr value="[value]"/>
+						</tox-sample>
+					</complexType>
+				</element>
+				-->
+				<tox-value>.</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<attribute name="style">
+					<tox-expr value="'text-align: center;'"/>
+				</attribute>
+				<tox-value>...</tox-value>
+			</complexType>
+		</element>
+		<element name="p">
+			<complexType>
+				<attribute name="style">
+					<tox-expr value="'text-align: center;'"/>
+				</attribute>
+				<tox-value>Article 5.</tox-value>
+			</complexType>
+		</element>
+	</complexType>
+	
+	<complexType name="conclusions.type.def">
+	</complexType>
+	<tox-document name="indictment-document">
+		<element name="akomaNtoso">
+			<complexType>
+				<element name="doc">
+					<complexType>
+						<element name="meta" type="meta.type.def" maxOccurs="1"/>
+						<element name="preface" type="preface.type.def" maxOccurs="1"/>
+						<element name="mainBody" type="mainBody.type.def" maxOccurs="1"/>
+						
+						<element name="conclusions" type="conclusions.type.def" maxOccurs="1"/>
+					</complexType>
+				</element>
+			</complexType>
+		</element>
+	</tox-document>
+</tox-template>
