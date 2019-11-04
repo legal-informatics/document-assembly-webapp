@@ -1014,5 +1014,397 @@
             </Atom>
          </head>
       </Implies>
+      
+      <!-- ########################### -->
+      <!-- ###  SERVICE CONTRACTS  ### -->
+      <!-- ########################### -->
+      
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="iitl_art85para1">iitl_art85para1</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel uri="dd:contract"/>
+						</op>
+						<slot>
+							<Ind uri="dd:service_provider"/>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind uri="dd:gross_cost"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>taxable_revenue</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>y</Var>
+					</slot>
+				</Atom>
+				<Equal oriented="yes">
+					<Var>y</Var>
+					<Expr>
+						<Fun in="yes">*</Fun>
+						<Ind>.8</Ind>
+						<Var>x</Var>
+					</Expr>
+				</Equal>
+			</head>
+		</Implies>
+
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lmssic_art44para1point1">lmssic_art44para1point1</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel>taxable_revenue</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>revenue_tax</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>y</Var>
+					</slot>
+				</Atom>
+				<Equal oriented="yes">
+					<Var>y</Var>
+					<Expr>
+						<Fun in="yes">*</Fun>
+						<Ind>.2</Ind>
+						<Var>x</Var>
+					</Expr>
+				</Equal>
+			</head>
+		</Implies>
+
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lmssic_art44para1point2">lmssic_art44para1point2</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel>taxable_revenue</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>pension_and_disability_insurance</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>y</Var>
+					</slot>
+				</Atom>
+				<Equal oriented="yes">
+					<Var>y</Var>
+					<Expr>
+						<Fun in="yes">*</Fun>
+						<Ind>.26</Ind>
+						<Var>x</Var>
+					</Expr>
+				</Equal>
+			</head>
+		</Implies>
+
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lmssic_art44para1point3">lmssic_art44para1point3</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel>health_insurance_obligation</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>taxable_revenue</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>health_insurance</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>y</Var>
+					</slot>
+				</Atom>
+				<Equal oriented="yes">
+					<Var>y</Var>
+					<Expr>
+						<Fun in="yes">*</Fun>
+						<Ind>.103</Ind>
+						<Var>x</Var>
+					</Expr>
+				</Equal>
+			</head>
+		</Implies>
+
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lhi_art15para1b">lhi_art15para1b</Ind>
+			</oid>
+			<body>
+				<And>
+					<Neg>
+						<Atom>
+							<op>
+								<Rel>health_insurance_obligation</Rel>
+							</op>
+							<slot>
+								<Ind>service_provider</Ind>
+								<Var>sp</Var>
+							</slot>
+						</Atom>
+					</Neg>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>health_insurance</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Data>0</Data>
+					</slot>
+				</Atom>
+			</head>
+		</Implies>
+
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="ll_art105para2">ll_art105para2</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel uri="dd:contract"/>
+						</op>
+						<slot>
+							<Ind uri="dd:gross_cost"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>revenue_tax</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>a</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>pension_and_disability_insurance</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>b</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>health_insurance</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>c</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>net_cost</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>y</Var>
+					</slot>
+				</Atom>
+				<Equal oriented="yes">
+					<Var>y</Var>
+					<Expr>
+						<Fun in="yes">-</Fun>
+						<Var>x</Var>
+						<Expr>
+							<Fun in="yes">+</Fun>
+							<Var>a</Var>
+							<Expr>
+								<Fun in="yes">+</Fun>
+								<Var>b</Var>
+								<Var>c</Var>
+							</Expr>
+						</Expr>
+					</Expr>
+				</Equal>
+			</head>
+		</Implies>
+		
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lmssic_art8para1">lmssic_art8para1</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel uri="dd:contract"/>
+						</op>
+						<slot>
+							<Ind uri="dd:service_provider"/>
+							<Var>sp</Var>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Atom>
+					<op>
+						<Rel>health_insurance_obligation</Rel>
+					</op>
+					<slot>
+						<Ind>service_provider</Ind>
+						<Var>sp</Var>
+					</slot>
+				</Atom>
+			</head>
+		</Implies>
+		
+		<Implies ruletype="defeasiblerule">
+			<oid>
+				<Ind uri="lhi_art15para1a">lhi_art15para1a</Ind>
+			</oid>
+			<body>
+				<And>
+					<Atom>
+						<op>
+							<Rel uri="dd:contract"/>
+						</op>
+						<slot>
+							<Ind uri="dd:service_provider"/>
+							<Var>sp</Var>
+						</slot>
+						<slot>
+							<Ind uri="dd:service_provider_has_employment"/>
+							<Data xsi:type="xs:string">yes</Data>
+						</slot>
+					</Atom>
+				</And>
+			</body>
+			<head>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel>health_insurance_obligation</Rel>
+						</op>
+						<slot>
+							<Ind>service_provider</Ind>
+							<Var>sp</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</head>
+			<superior>
+				<Ind uri="lmssic_art8para1"/>
+			</superior>
+		</Implies>
+      
    </Assert>
 </RuleML>
