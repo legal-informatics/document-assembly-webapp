@@ -838,5 +838,237 @@
 			</ruleml:Rule>
 		</lrml:PrescriptiveStatement>
 		<!-- ====================================================== -->
+		<!-- ===============  SERRVICE CONTRACTS ================== -->
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="iitl_art85para1">
+			<ruleml:Rule key=":iitl_art85para1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:contract"/>
+							<ruleml:Var type="dd:service_provider">sp</ruleml:Var>
+							<ruleml:Var type="dd:gross_cost">x</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>taxable_revenue</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">y</ruleml:Var>
+					</ruleml:Atom>
+					<ruleml:Equal>
+						<ruleml:Var>y</ruleml:Var>
+						<ruleml:Expr>
+							<ruleml:Fun>*</ruleml:Fun>
+							<ruleml:Var>x</ruleml:Var>
+							<ruleml:Ind>.8</ruleml:Ind>
+						</ruleml:Expr>
+					</ruleml:Equal>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lmssic_art44para1point1">
+			<ruleml:Rule key=":lmssic_art44para1point1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>taxable_revenue</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">x</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>revenue_tax</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">y</ruleml:Var>
+					</ruleml:Atom>
+					<ruleml:Equal>
+						<ruleml:Var>y</ruleml:Var>
+						<ruleml:Expr>
+							<ruleml:Fun>*</ruleml:Fun>
+							<ruleml:Var>x</ruleml:Var>
+							<ruleml:Ind>.2</ruleml:Ind>
+						</ruleml:Expr>
+					</ruleml:Equal>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lmssic_art44para1point2">
+			<ruleml:Rule key=":lmssic_art44para1point2" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>taxable_revenue</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">x</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>pension_and_disability_insurance</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">y</ruleml:Var>
+					</ruleml:Atom>
+					<ruleml:Equal>
+						<ruleml:Var>y</ruleml:Var>
+						<ruleml:Expr>
+							<ruleml:Fun>*</ruleml:Fun>
+							<ruleml:Var>x</ruleml:Var>
+							<ruleml:Ind>.26</ruleml:Ind>
+						</ruleml:Expr>
+					</ruleml:Equal>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lmssic_art44para1point3">
+			<ruleml:Rule key=":lmssic_art44para1point3" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>health_insurance_obligation</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel>taxable_revenue</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">x</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>health_insurance</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">y</ruleml:Var>
+					</ruleml:Atom>
+					<ruleml:Equal>
+						<ruleml:Var>y</ruleml:Var>
+						<ruleml:Expr>
+							<ruleml:Fun>*</ruleml:Fun>
+							<ruleml:Var>x</ruleml:Var>
+							<ruleml:Ind>.103</ruleml:Ind>
+						</ruleml:Expr>
+					</ruleml:Equal>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lhi_art15para1b">
+			<ruleml:Rule key=":lhi_art15para1b" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Neg>
+							<ruleml:Atom>
+								<ruleml:Rel>health_insurance_obligation</ruleml:Rel>
+								<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							</ruleml:Atom>
+						</ruleml:Neg>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>health_insurance</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">0</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ll_art105para2">
+			<ruleml:Rule key=":ll_art105para2" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:contract"/>
+							<ruleml:Var type="dd:gross_cost">x</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel>revenue_tax</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">a</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel>pension_and_disability_insurance</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">b</ruleml:Var>
+						</ruleml:Atom>
+						<ruleml:Atom>
+							<ruleml:Rel>health_insurance</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+							<ruleml:Var type=":amount">c</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>net_cost</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						<ruleml:Var type=":amount">y</ruleml:Var>
+					</ruleml:Atom>
+					<ruleml:Equal>
+						<ruleml:Var>y</ruleml:Var>
+						<ruleml:Expr>
+							<ruleml:Fun>-</ruleml:Fun>
+							<ruleml:Var>x</ruleml:Var>
+							<ruleml:Expr>
+								<ruleml:Fun>+</ruleml:Fun>
+								<ruleml:Var>a</ruleml:Var>
+								<ruleml:Expr>
+									<ruleml:Fun>+</ruleml:Fun>
+									<ruleml:Var>b</ruleml:Var>
+									<ruleml:Var>c</ruleml:Var>
+								</ruleml:Expr>
+							</ruleml:Expr>
+						</ruleml:Expr>
+					</ruleml:Equal>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lmssic_art8para1">
+			<ruleml:Rule key=":lmssic_art8para1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:contract"/>
+							<ruleml:Var type="dd:service_provider">sp</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>health_insurance_obligation</ruleml:Rel>
+						<ruleml:Var type=":service_provider">sp</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="lhi_art15para1a">
+			<ruleml:Rule key=":lhi_art15para1a" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel iri="dd:service_provider_has_employment"/>
+							<ruleml:Var type="dd:service_provider">sp</ruleml:Var>
+							<ruleml:Data xsi:type="xs:string">yes</ruleml:Data>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Neg>
+						<ruleml:Atom>
+							<ruleml:Rel>health_insurance_obligation</ruleml:Rel>
+							<ruleml:Var type=":service_provider">sp</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:Neg>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:OverrideStatement>
+			<lrml:Override under="#lmssic_art8para1" over="#lhi_art15para1a"/>
+		</lrml:OverrideStatement>
+		<!-- ====================================================== -->
 	</lrml:Statements>
 </lrml:LegalRuleML>
