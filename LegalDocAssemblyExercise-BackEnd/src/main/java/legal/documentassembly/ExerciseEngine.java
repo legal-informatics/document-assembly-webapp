@@ -37,8 +37,8 @@ public class ExerciseEngine {
         ReasonerUtil.getConclusion(exercise);
     }
 
-    public BufferedImage buildArgumentGraph() {
-        return ArgumentGraphUtil.buildArgumentGraph(exercise);
+    public String buildArgumentGraph(String language) {
+        return ArgumentGraphUtil.buildArgumentGraph(exercise, language);
     }
 
     public String exportDocument() {
@@ -53,28 +53,6 @@ public class ExerciseEngine {
         return exercise.getSteps().get(currentStepIndex);
     }
 
-    /*
-	// next 3 methods requires -1 as currentStepIndex initial value
-	public Step getNextStep() {
-		if (hasNextStep())
-			return exercise.getSteps().get(++currentStepIndex);
-		return null;
-	}
-	
-	public Step getPreviousStep() {
-		if (currentStepIndex > 0)
-			return exercise.getSteps().get(--currentStepIndex);
-		return null;
-	}
-
-	public Step getPreviousStep(int index) {
-		if (index >= 0 && index < currentStepIndex) {
-			currentStepIndex = index;
-			return exercise.getSteps().get(currentStepIndex);
-		}
-		return null;
-	}
-     */
     public boolean stepForward() {
         currentStepIndex++;
         if (endOfExercise()) {

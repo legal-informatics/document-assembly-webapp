@@ -4,7 +4,7 @@
         <RuleFact name="defendant" type="string"/>
         <RuleFact name="speed" type="int"/>
         <RuleFact name="alcohol_level" type="float"/>
-        <RuleFact name="property_damage" type="float"/>
+        <RuleFact name="property_damage" type="int"/>
         <RuleFact name="victim_injuries" type="enum(minor,grievous,death)"/>
         <RuleFact name="unsafe_distance" type="boolean"/>
         <RuleFact name="negligence" type="boolean"/>
@@ -76,7 +76,7 @@
         <Step ruleFact="alcohol_level" templateFact="alcohol_level" answerType="float" text="Defendant's alcohol level"/>
         <Step ruleFact="speed" templateFact="speed" answerType="int" text="Defendant's speed"/>
         <Step ruleFact="" templateFact="property_damaged" answerType="string" text="Damaged property"/>
-        <Step ruleFact="property_damage" templateFact="property_damage" answerType="float" text="Property damage value"/>
+        <Step ruleFact="property_damage" templateFact="property_damage" answerType="int" text="Property damage value"/>
         <Step ruleFact="victim_injuries" templateFact="victim_injuries" answerType="string" text="Victim's body injuries [minor|grievous|death]"/>
     </Steps>
 </Exercise>

@@ -17,3 +17,7 @@ body {
     z-index: 9999;
     background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
+
+.ui-dialog-titlebar {
+    display: none;
+}

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-
-import {ExerciseComponent} from "./exercise.component"
+import {ExerciseComponent} from "./exercise.component";
+import {TranslateService} from "ng2-translate";
 
  
 @Component({
@@ -9,7 +9,7 @@ import {ExerciseComponent} from "./exercise.component"
 //    directives: [StepsComponent, DocumentComponent],
     template: `
         <div style="text-align:center;">
-            <h1 style="margin: 5px;">Legal Document Assembly Exercise System</h1>
+            <h1 style="margin: 5px;">{{'Main.Title'|translate}}</h1>
         </div>
         <exercise-component>...</exercise-component>
         `,

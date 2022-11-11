@@ -7,6 +7,8 @@ export class Step {
 
     public answer: string;
     public answerType: string;
+    public answerSuffix: string;
+    public hint: string;
     
     public StepExplanations: StepExplanation[];
     

@@ -1,10 +1,9 @@
 package legal.documentassembly.services;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.StringReader;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,8 +15,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import legal.documentassembly.EnvironmentProperties;
 import legal.documentassembly.ExerciseEngine;
 import legal.documentassembly.bean.Exercise;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.apache.log4j.Logger;
 
 @Path("assembly")
@@ -43,81 +53,91 @@ public class AssemblyResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean updateAssemblingState(@PathParam("id") Integer id, Exercise exercise) {
+        logger.debug("updating assembly...");
         exercises.get(id).setExercise(exercise);
         return true;
     }
-/*
-    @OPTIONS
-    @Path("{id}")
-    public Response optionsMethod() {
-        System.out.println("### Options method called ###");
-        return Response
-            .ok("")
-            .header("Access-Control-Allow-Origin", "*")
-            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-            .header("Access-Control-Allow-Credentials", "true")
-            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-            .header("Access-Control-Max-Age", "1209600")
-            .build();
-    }
-*/
-    /*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Boolean endOfExercise() {
-        return engine.endOfExercise();
-    }
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Step getCurrentStep() {
-        return engine.getCurrentStep();
-    }
-    
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String assignAnswer(String answer) {
-        try {
-            engine.assignAnswer(answer);
-            engine.stepForward();
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-        return null;
-    }
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public void stepForward() {
-        
-    }
-    */
 
     @GET
     @Path("{id}/indictment.xml")
     @Produces(MediaType.APPLICATION_XML)
     public String getDocument(@PathParam("id") Integer id) {
+        logger.debug("document request...");
         // exercises.get(id).startReasoner();
-        return exercises.get(id).exportDocument();
+        String response = exercises.get(id).exportDocument();
+        logger.debug("...document response");
+        return response;
     }
 
     @GET
-    @Path("{id}/indictment.png")
-    @Produces("image/png")
-    public Response getArgumentGraph(@PathParam("id") Integer id) {
-        System.out.println("argument graph requested for assembly: " + id);
-        BufferedImage image = exercises.get(id).buildArgumentGraph();
-        if (image == null)
-            image = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    @Path("{id}/indictment.akn")
+    @Produces(MediaType.APPLICATION_XML)
+    public Response getAkomaNtosoDocument(@PathParam("id") Integer id) {
+        logger.debug("document request...");
+        // exercises.get(id).startReasoner();
+        String response = exercises.get(id).exportDocument();
+        logger.debug("...document response");
+        return Response.ok().header("Content-Disposition", "attachment; filename=\"indictment.akn\"").entity(response).build();
+    }
+    
+    @GET
+    @Path("{id}/indictment.pdf")
+    @Produces("application/pdf")
+    public Response getPdfDocument(@PathParam("id") Integer id) {
         try {
-            ImageIO.write(image, "png", baos);
+            String akomaNtosoDocument = exercises.get(id).exportDocument();
+            FopFactory fopFactory = FopFactory.newInstance(new File(EnvironmentProperties.converter_folder + "fopConfig.xml"));
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(
+                    new StreamSource(EnvironmentProperties.converter_folder + "xml2fop.xsl"));
+            Result res = new SAXResult(fop.getDefaultHandler());
+            Source src = new StreamSource( new StringReader(akomaNtosoDocument) );
+            transformer.transform(src, res);
+
+            return Response.ok().header("Content-Disposition", "attachment; filename=\"indictment.pdf\"")
+                    .entity(out.toByteArray()).build();
         } catch (Exception e) {
             e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
         }
-        byte[] imageData = baos.toByteArray();
-        // return Response.ok(imageData).build();
-        return Response.ok(new ByteArrayInputStream(imageData)).build();
+        // return Response.ok().build();
+    }
+    
+    @GET
+    @Path("{id}/indictment.rtf")
+    @Produces("text/rtf")
+    public Response getRtfDocument(@PathParam("id") Integer id) {
+        try {
+            String akomaNtosoDocument = exercises.get(id).exportDocument();
+            FopFactory fopFactory = FopFactory.newInstance(new File(EnvironmentProperties.converter_folder + "fopConfig.xml"));
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_RTF, out);
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(
+                    new StreamSource(EnvironmentProperties.converter_folder + "xml2fop.xsl"));
+            Result res = new SAXResult(fop.getDefaultHandler());
+            Source src = new StreamSource( new StringReader(akomaNtosoDocument) );
+            transformer.transform(src, res);
+
+            return Response.ok().header("Content-Disposition", "attachment; filename=\"indictment.rtf\"")
+                    .entity(out.toByteArray()).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        // return Response.ok().build();
+    }
+
+    @GET
+    @Path("{id}/indictment_{language}.vis")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getArgumentGraph(@PathParam("id") Integer id, @PathParam("language") String language) {
+        logger.debug("graph request...");
+        String graphString = exercises.get(id).buildArgumentGraph(language);
+        logger.debug("...graph response");
+        return graphString;
     }
 
     @GET

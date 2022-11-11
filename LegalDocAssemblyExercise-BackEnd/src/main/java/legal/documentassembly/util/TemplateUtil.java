@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -50,9 +52,10 @@ public class TemplateUtil {
             String templateFilename = EnvironmentProperties.input_folder + exercise.getTemplateFilename();
             tgEngine.parseTemplate(new FileInputStream(templateFilename));
             ToXgeneDocumentCollection tgCollection = (ToXgeneDocumentCollection) tgEngine.getToXgeneDocumentCollections().get(0);
-            tgEngine.materialize(tgCollection, new PrintStream(new FileOutputStream(EnvironmentProperties.document_filename)));
+            tgEngine.materialize(tgCollection, new PrintStream(EnvironmentProperties.document_filename, "UTF-8"));
             
-            FileReader fileReader = new FileReader(EnvironmentProperties.document_filename);
+            // FileReader fileReader = new FileReader(EnvironmentProperties.document_filename);
+            InputStreamReader fileReader = new InputStreamReader(new FileInputStream(EnvironmentProperties.document_filename), "UTF-8");
             String line;
             try (BufferedReader br = new BufferedReader(fileReader)) {
                 while ((line = br.readLine()) != null) {
@@ -96,25 +99,51 @@ public class TemplateUtil {
             Element rootElement = doc.createElement("fact_list");
             doc.appendChild(rootElement);
             for (Step step : exercise.getSteps()) {
-                Element factEl = doc.createElement("fact");
-                Element nameEl = doc.createElement("name");
-                nameEl.setTextContent(step.getTemplateFact());
-                Element valueEl = doc.createElement("value");
-                valueEl.setTextContent((step.getAnswer() != null ? step.getAnswer().toString() : ("<span style=\"color:gray\">&lt;&lt;" + step.getTemplateFact() + "&gt;&gt;</span>")));
-                factEl.appendChild(nameEl);
-                factEl.appendChild(valueEl);
-                rootElement.appendChild(factEl);
+                // System.out.println(step.getText() + ": " + step.isUnderRevision());
+                String valueText = "";
+                if (step.getAnswer() != null && !step.isUnderRevision())
+                    valueText = "<span id=\"fact-" + step.getTemplateFact() + "\" style=\"color: blue; cursor: pointer\">" + unicode2htmlEntities(step.getAnswer().toString()) + "</span>";
+                else
+                    valueText = "<span style=\"color:gray\">&lt;&lt;" + step.getTemplateFact() + "&gt;&gt;</span>";
+
+                appendXmlFact(doc, rootElement, step.getTemplateFact(), valueText);
+            }
+            ArrayList<String> conclusionsToConfirm = new ArrayList<String>();
+            for (RulebaseImplication imp : RulebaseUtil.retrieveImplications()) {
+                conclusionsToConfirm.add(imp.getHeadRelation().getName());
+            }
+            ArrayList<ReasonerConclusion> confirmedConclusions = ReasonerUtil.confirmedConclusions(exercise, conclusionsToConfirm);
+            for (ReasonerConclusion conclusion : confirmedConclusions) {
+                String relationName = conclusion.getRelation().getName();
+                //if (conclusion.isTrue()) {
+                    appendXmlFact(doc, rootElement, relationName, conclusion.getStatus());
+                    for (String key : conclusion.getRelation().getSymbols().keySet()) {
+                        appendXmlFact(doc, rootElement, relationName + ":" + key, conclusion.getRelation().getSymbols().get(key));
+                    }
+                //}
+                //appendXmlFact(doc, rootElement, conclusion, results.containsKey(conclusion) ? results.get(conclusion) : "");
             }
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult file = new StreamResult(new File(EnvironmentProperties.document_facts_filename));
+            StreamResult file = new StreamResult(new File(EnvironmentProperties.document_facts_filename).toURI().getPath());  // without toURI().getPath() throws error FileNotFoundException
             transformer.transform(source, file);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
+    }
+    private static void appendXmlFact(Document doc, Element parentElement, String factName, String factValue) {
+        Element factEl = doc.createElement("fact");
+        Element nameEl = doc.createElement("name");
+        nameEl.setTextContent(factName);
+        Element valueEl = doc.createElement("value");
+        valueEl.setTextContent(factValue);
+        factEl.appendChild(nameEl);
+        factEl.appendChild(valueEl);
+        parentElement.appendChild(factEl);
     }
 
     public static Map<String, String> retrieveFactsForTemplate(String templateFilename) {
@@ -141,28 +170,25 @@ public class TemplateUtil {
         }
         return retVal;
     }
-
-    public static void main(String[] args) {
-        String templateFile = "indictment_art297para2.tsl";
-        String factsFile = "";
-        String outputFile = "indictment_art297para2.akn";
-        try {
-            System.setProperty("ToXgene_home", "./libs");
-            boolean verbose = false;
-            boolean showWarnings = true;
-            ToXgeneReporter tgReporter = new ToXgeneReporterImpl(verbose, showWarnings);
-            ToXgeneSession session = new ToXgeneSession();
-            session.reporter = tgReporter;
-            session.addNewLines = true;
-            toxgene.core.Engine tgEngine = new Engine();
-            tgEngine.startSession(session);
-            tgEngine.parseTemplate(new FileInputStream(templateFile));
-            ToXgeneDocumentCollection tgCollection = (ToXgeneDocumentCollection) tgEngine.getToXgeneDocumentCollections().get(0);
-            tgEngine.materialize(tgCollection, new PrintStream(new FileOutputStream(outputFile)));
-            //toxgene.ToXgene.main(arg0);
-        } catch (Exception e) {
-            e.printStackTrace();
+    
+    private static String unicode2htmlEntities(String text) {
+        String retVal = "";
+        for (char c: text.toCharArray()) {
+            switch (c) {
+                case '\u0160': retVal += "&#352;"; break; //Sh
+                case '\u0161': retVal += "&#353;"; break; //sh
+                case '\u017d': retVal += "&#381;"; break; //Zz
+                case '\u017e': retVal += "&#382;"; break; //zz
+                case '\u010c': retVal += "&#268;"; break; //Ch
+                case '\u010d': retVal += "&#269;"; break; //ch
+                case '\u0106': retVal += "&#262;"; break; //Cc
+                case '\u0107': retVal += "&#263;"; break; //cc
+                case '\u0110': retVal += "&#272;"; break; //Dj
+                case '\u0111': retVal += "&#273;"; break; //dj
+                default: retVal += c;
+            }
         }
+        return retVal;
     }
 
 }

@@ -22,7 +22,6 @@ public class ExerciseResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Exercise> getExercises() {
-        logger.debug("test " + EnvironmentProperties.input_folder);
         ArrayList<Exercise> retVal = new ArrayList();
         for (final File fileEntry : (new File(EnvironmentProperties.input_folder)).listFiles()) {
             String filename = fileEntry.getName();

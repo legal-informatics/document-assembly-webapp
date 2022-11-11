@@ -9,8 +9,8 @@ export class AssemblyService {
     constructor(public http:Http) {
         
     }
-    
-    private assemblyBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/assembly/';
+    //private assemblyBaseUrl = window.webServiceUrlPrefix + 'rest/assembly/';
+     private assemblyBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/assembly/';
     // private assemblyBaseUrl = 'rest/assembly/';
     
     postAssembly(exercise: Exercise) {
@@ -32,6 +32,12 @@ export class AssemblyService {
             .map(response => <String>response.text())
             .catch(this.handleError);
     }
+
+    getArgumentGraph(assemblyId: number, language: string) {
+        return this.http.get(this.assemblyBaseUrl + assemblyId + "/indictment_" + language + ".vis")
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
     
     private handleError(error: Response) {
         console.error(error);
@@ -40,6 +46,16 @@ export class AssemblyService {
     
     public getArgumentGraphUrl(assemblyId: number): string {
         return this.assemblyBaseUrl + assemblyId + "/indictment.png";
+    }
+    
+    public getDocumentRtfUrl(assemblyId: number): string {
+        return this.assemblyBaseUrl + assemblyId + "/indictment.rtf";
+    }
+    public getDocumentAknUrl(assemblyId: number): string {
+        return this.assemblyBaseUrl + assemblyId + "/indictment.akn";
+    }
+    public getDocumentPdfUrl(assemblyId: number): string {
+        return this.assemblyBaseUrl + assemblyId + "/indictment.pdf";
     }
     
 }

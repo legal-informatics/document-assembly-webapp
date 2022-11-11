@@ -9,7 +9,8 @@ export class ExplanatoryMaterialService {
         
     }
     
-    private explanatoryBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/explanatoryMaterial/';
+    //private explanatoryBaseUrl = window.webServiceUrlPrefix + 'rest/explanatoryMaterial/';
+     private explanatoryBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/explanatoryMaterial/';
     // private explanatoryBaseUrl = 'rest/explanatoryMaterial/';
     
     getExplanatoryMaterials() {

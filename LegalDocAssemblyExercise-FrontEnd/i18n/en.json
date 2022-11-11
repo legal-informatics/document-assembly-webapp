@@ -1,0 +1,33 @@
+{
+    "Main": {
+        "Title": "LEgal Document Assembly System"
+    },
+    "LoginDialog": {
+        "Title": "Log In",
+        "ExerciseSelection": "Assembly configuration",
+        "LanguageSelection": "Language",
+        "Confirm": "Confirm"
+    },
+    "Exercise": {
+        "ProgressPanelTitle": "Assembly progress",
+        "StepLabel": "Step",
+        "DocumentPanelTitle": "Document",
+        "ArgumentGraphPanelTitle": "Argument graph",
+        "ExplanatoryMaterialPanelTitle": "Explanatory Material"
+    },
+    "StepDialog": {
+        "Next": "Next",
+        "Previous": "Previous",
+        "Cancel": "Cancel"
+    },
+    "HelpDialog": {
+        "Text": "Legal Document Assembly Exercise System is a prototype application developed as a proof of concept for PhD thesis. As user choose an exercise based on rule-base and document template, while progressing through fact gathering process, system shows how those facts reflects on document content and corresponding argumentation.",
+        "Close": "Close"
+    },
+    "SettingsDialog": {
+        "RevisionClearsFollowingAnswers": "Revision of an answers clears following answers",
+        "RevisionConsidersFollowingAnswers": "During revision of an answer following answers are considered",
+        "Ok": "Ok",
+        "Cancel": "Cancel"
+    }
+}

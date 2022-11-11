@@ -24,7 +24,9 @@
         "rxjs": "5.0.0-beta.12",
         "systemjs": "0.19.39",
         "zone.js": "^0.6.25",
-        "primeng": "1.0.0-rc.3"
+        "primeng": "1.0.0-rc.3",
+        "vis": "^4.17.0",
+        "ng2-translate": "^4.0.0"
     },
     "devDependencies": {
         "@types/core-js": "^0.9.34",
@@ -32,9 +34,13 @@
         "concurrently": "^3.0.0",
         "lite-server": "^2.2.2",
         "typescript": "^2.0.3",
-        
         "ts-loader": "^0.7.2",  
         "webpack": "^1.12.9",
-        "webpack-dev-server": "^1.14.0" 
+        "webpack-dev-server": "^1.14.0",
+        "copy-webpack-plugin": "^4.0.1",
+        "css-loader": "^0.26.1",
+        "style-loader": "^0.13.2",
+        "url-loader": "^0.5.7",
+        "file-loader": "^0.10.0"
     }
 }

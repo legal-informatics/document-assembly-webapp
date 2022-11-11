@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<fop version="1.0">
+    <renderers>
+        <renderer mime="application/pdf">
+            <fonts>
+                <font kerning="yes" embed-url="file:///C:/Windows/Fonts/arial.ttf">
+                    <font-triplet name="Arial" style="normal" weight="normal" />
+                </font>
+            </fonts>
+        </renderer>
+    </renderers>
+</fop>

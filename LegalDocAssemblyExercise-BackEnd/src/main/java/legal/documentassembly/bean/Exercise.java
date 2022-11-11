@@ -86,7 +86,7 @@ public class Exercise {
         try {
             JAXBContext context = JAXBContext.newInstance(Exercise.class);
             Unmarshaller um = context.createUnmarshaller();
-            exercise = (Exercise) um.unmarshal(new FileReader(EnvironmentProperties.input_folder + filename));
+            exercise = (Exercise) um.unmarshal(new File(EnvironmentProperties.input_folder + filename));
         } catch (Exception e) {
             e.printStackTrace();
         }

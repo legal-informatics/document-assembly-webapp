@@ -13,9 +13,11 @@ public class Step {
     private String text;
     private String ruleFact;
     private String templateFact;
-    // private QuestionType answer;
     private String answer;
     private String answerType;
+    private String answerSuffix;
+    private String hint;
+    private boolean underRevision = false;
     private ArrayList<StepExplanation> stepExplanations = new ArrayList<>();
 
 
@@ -31,7 +33,6 @@ public class Step {
     public String getText() {
         return text;
     }
-
     public void setText(String text) {
         this.text = text;
     }
@@ -40,7 +41,6 @@ public class Step {
     public String getRuleFact() {
         return ruleFact;
     }
-
     public void setRuleFact(String ruleFact) {
         this.ruleFact = ruleFact;
     }
@@ -49,23 +49,13 @@ public class Step {
     public String getTemplateFact() {
         return templateFact;
     }
-
     public void setTemplateFact(String templateFact) {
         this.templateFact = templateFact;
     }
 
-    /*
-	public QuestionType getAnswer() {
-		return answer;
-	}
-	public void setAnswer(QuestionType answer) {
-		this.answer = answer;
-	}
-     */
     public String getAnswer() {
         return answer;
     }
-
     public void setAnswer(String answer) {
         this.answer = answer;
     }
@@ -74,10 +64,33 @@ public class Step {
     public String getAnswerType() {
         return answerType;
     }
-
     public void setAnswerType(String answerType) {
         this.answerType = answerType;
     }
+
+    @XmlAttribute(name = "answerSuffix")
+    public String getAnswerSuffix() {
+        return answerSuffix;
+    }
+    public void setAnswerSuffix(String answerSuffix) {
+        this.answerSuffix = answerSuffix;
+    }
+
+    @XmlAttribute(name = "hint")
+    public String getHint() {
+        return hint;
+    }
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+    
+    public boolean isUnderRevision() {
+        return underRevision;
+    }
+    public void setUnderRevision(boolean underRevision) {
+        this.underRevision = underRevision;
+    }
+
 
     @XmlElement(name = "StepExplanations")
     public ArrayList<StepExplanation> getStepExplanations() {

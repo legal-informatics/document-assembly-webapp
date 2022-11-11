@@ -9,7 +9,8 @@ export class ExerciseService {
         
     }
     
-    private exerciseBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/exercises/';
+    //private exerciseBaseUrl = window.webServiceUrlPrefix + 'rest/exercises/';
+     private exerciseBaseUrl = 'http://localhost:8080/LegalDocAssemblyExercise/rest/exercises/';
     // private exerciseBaseUrl = './app/services/test_exercises.json';
     // private exerciseBaseUrl = 'rest/exercises/';
     

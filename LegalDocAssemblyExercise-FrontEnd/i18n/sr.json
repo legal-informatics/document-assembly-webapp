@@ -1,0 +1,33 @@
+{
+    "Main": {
+        "Title": "Sistem za sastavljanje pravnih dokumenata"
+    },
+    "LoginDialog": {
+        "Title": "Prijavljivanje",
+        "ExerciseSelection": "Izaberite vežbu",
+        "LanguageSelection": "Jezik",
+        "Confirm": "Potvrdi"
+    },
+    "Exercise": {
+        "ProgressPanelTitle": "Tok vežbe",
+        "StepLabel": "Korak",
+        "DocumentPanelTitle": "Dokument",
+        "ArgumentGraphPanelTitle": "Graf argumenata",
+        "ExplanatoryMaterialPanelTitle": "Pomoćni materijal"
+    },
+    "StepDialog": {
+        "Next": "Sledeći",
+        "Previous": "Prethodni",
+        "Cancel": "Odustani"
+    },
+    "HelpDialog": {
+        "Text": "Sistem za vežbanje sastavljanja pravnih dokumenata je prototip razvijen u okviru istraživačkog rada na doktorskim studijama. Nakon što korisnik izabere vežbu baziranu na pravilima i šablonima, kroz proces sakupljanja činjenica, sistem mu pokazuje kako se te činjenice odražavaju na sadržinu dokumenta i odgovarajuću argumentaciju.",
+        "Close": "Zatvori"
+    },
+    "SettingsDialog": {
+        "RevisionClearsFollowingAnswers": "Izmena odgovora briše naredne odgovore",
+        "RevisionConsidersFollowingAnswers": "Tokom izmene odgovora se uzimaju u obzir naredni odgovori",
+        "Ok": "Potvrdi",
+        "Cancel": "Odustani"
+    }
+}

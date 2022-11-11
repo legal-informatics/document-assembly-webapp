@@ -8,95 +8,181 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.SwingConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 import legal.documentassembly.EnvironmentProperties;
 import legal.documentassembly.bean.Exercise;
-import legal.documentassembly.bean.Implication;
+import legal.documentassembly.bean.RulebaseImplication;
+import legal.documentassembly.bean.ReasonerConclusion;
+import legal.documentassembly.bean.RuleFact;
+import legal.documentassembly.bean.RulebaseImplication;
+import legal.documentassembly.bean.RulebaseRelation;
 import legal.documentassembly.bean.Step;
+import legal.documentassembly.bean.TemplateFact;
+import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonToken;
+import org.codehaus.jackson.io.JsonStringEncoder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 public class ArgumentGraphUtil {
 
-    public static BufferedImage buildArgumentGraph(Exercise exercise) {
-        ArrayList<Implication> implications = RulebaseUtil.retrieveImplications(exercise.getRulebaseGoal());
+    private static final Logger logger = Logger.getLogger(ArgumentGraphUtil.class);
+    public static final String conclusionPropertiesIndent = "conclusionProperties";
+
+    public static String buildArgumentGraph(Exercise exercise, String language) {
+        logger.info("graph building started...");
+        ArrayList<RulebaseImplication> implications = RulebaseUtil.retrieveImplications();
         ArrayList<String> conclusionsToConfirm = new ArrayList<String>();
-        for (Implication imp : implications) {
-            conclusionsToConfirm.add(imp.getHeadRelation());
+        for (RulebaseImplication imp : implications) {
+            conclusionsToConfirm.add(imp.getHeadRelation().getName());
         }
-        ReasonerUtil.updateRdf(exercise);
-        //ArrayList<String> confirmedConclusions = ReasonerUtil.conclusionsConfirmedByRules(conclusionsToConfirm);
-        ArrayList<String> confirmedConclusions = ReasonerUtil.confirmedConclusions(conclusionsToConfirm);
-        mxGraph graph = new mxGraph();
-        Object parent = graph.getDefaultParent();
-        graph.getModel().beginUpdate();
+        ArrayList<ReasonerConclusion> confirmedConclusions = ReasonerUtil.confirmedConclusions(exercise, conclusionsToConfirm);
+
+        ArrayList<String> nodes = new ArrayList<String>();
+        ArrayList<String> boxNodes = new ArrayList<String>();
+        ArrayList<String> edges = new ArrayList<String>();
+        for (RulebaseImplication imp : implications) {
+            boolean confirmedHead = false;
+            for (ReasonerConclusion confirmedConclusion : confirmedConclusions) {
+                if (imp.getHeadRelation().confirmedBy(confirmedConclusion.getRelation())) {
+                    confirmedHead = true;
+                }
+            }
+            boolean allPremisesConfirmed = true;
+            for (RulebaseRelation premise : imp.getPremises()) {
+                boolean confirmedPremise = false;
+                for (ReasonerConclusion confirmedConclusion : confirmedConclusions) {
+                    if (premise.confirmedBy(confirmedConclusion.getRelation())) {
+                        confirmedPremise = true;
+                    }
+                }
+                if (!confirmedPremise) {
+                    allPremisesConfirmed = false;
+                }
+            }
+            if (confirmedHead && allPremisesConfirmed && imp.getPremises().size() > 0) {  // should be drawn
+                if (!nodes.contains(imp.getId())) {  // represent rule
+                    nodes.add(imp.getId());
+                }
+                if (!nodes.contains(imp.getHeadRelation().getName())) {  // represent relation
+                    nodes.add(imp.getHeadRelation().getName());
+                    boxNodes.add(imp.getHeadRelation().getName());
+                }
+                String headEdge = "{\"from\": \"" + nodes.indexOf(imp.getId()) + "\", \"to\": \"" + nodes.indexOf(imp.getHeadRelation().getName()) + "\"}";
+                if(!edges.contains(headEdge))
+                    edges.add(headEdge);
+                for (RulebaseRelation premise : imp.getPremises()) {
+                    if (!nodes.contains(premise.getName())) {
+                        nodes.add(premise.getName());
+                        boxNodes.add(premise.getName());
+                    }
+                    if (!nodes.contains(imp.getId())) {
+                        nodes.add(imp.getId());
+                    }
+                    String premiseEdge = "{\"from\": \"" + nodes.indexOf(premise.getName()) + "\", \"to\": \"" + nodes.indexOf(imp.getId()) + "\"}";
+                    if(!edges.contains(premiseEdge))
+                        edges.add(premiseEdge);
+                }
+            }
+        }
+        
+        HashMap<String,Integer> ruleStepPairs = getRuleStepPairs(exercise, implications);
+        String retVal = "{\"nodes\":[";
+        for (int i = 0; i < nodes.size(); i++) {
+            String label = nodes.get(i);
+            label = translateLabel(label, language, confirmedConclusions);
+            
+            String shape = boxNodes.contains(nodes.get(i)) ? ", \"shape\": \"box\"" : "";
+            String step = ruleStepPairs.containsKey(nodes.get(i)) ? ", \"step\": \"" + ruleStepPairs.get(nodes.get(i)) + "\"" : "";
+            retVal += "{\"id\": \"" + i + "\", \"label\": \"" + label + "\""
+                    + shape + step + "}"
+                    + ((i < nodes.size() - 1) ? "," : "") + "\n";
+        }
+        retVal += "],\"edges\":[";
+        for (int i = 0; i < edges.size(); i++) {
+            retVal += edges.get(i) + ((i < edges.size() - 1) ? "," : "") + "\n";
+        }
+        retVal += "]}";
+        logger.info("... graph building finished");
+        return retVal;
+    }
+    
+    private static String translateLabel(String label, String language, ArrayList<ReasonerConclusion> confirmedConclusions) {
+        HashMap<String,String> dictionary = RulebaseUtil.getRulebaseLabels().get(language);
+        label = dictionary.containsKey(label) ? dictionary.get(label) : label;
+        for (ReasonerConclusion conclusion : confirmedConclusions) {  // find conclusion
+            if (label.equals(conclusion.getRelation().getName())) {           // and find property
+                for(String key: conclusion.getRelation().getSymbols().keySet()) {
+                    String indent = label+":"+key+"("+conclusion.getRelation().getSymbols().get(key)+")";
+                    if (dictionary.containsKey(indent))
+                        label = dictionary.get(indent);
+                }
+            }
+        }
+        return label;
+    }
+    
+    private static HashMap<String, Integer> getRuleStepPairs(Exercise exercise, ArrayList<RulebaseImplication> implications) {
+        HashMap<String, Integer> retVal = new HashMap<String, Integer>();
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
         try {
-            HashMap<String, Object> createdElements = new HashMap<String, Object>();
-            for (Implication imp : implications) {
-                boolean confirmedHead = false;
-                for (String confirmedConclusion : confirmedConclusions) {
-                    if (imp.getHeadRelation().equals(confirmedConclusion)) {
-                        confirmedHead = true;
-                    }
-                }
-                boolean allPremisesConfirmed = true;
-                for (String premise : imp.getBodyRelations()) {
-                    boolean confirmedPremise = false;
-                    for (String confirmedConclusion : confirmedConclusions) {
-                        if (premise.equals(confirmedConclusion)) {
-                            confirmedPremise = true;
+            DocumentBuilder builder = domFactory.newDocumentBuilder();
+            Document doc = builder.parse(EnvironmentProperties.input_folder + "rulebase.ruleml");
+            XPath xpath = XPathFactory.newInstance().newXPath();
+            for (RulebaseImplication implication : implications) {
+                for (RulebaseRelation relation : implication.getPremises()) {
+                    try {
+                        NodeList nodelist = (NodeList) xpath.evaluate("//Implies[head/Atom/op/Rel[text()=\"" + relation.getName() + "\"]]/body//slot/Ind[not(ancestor::Implies/head//Var/text()=../Var/text())]/@uri", doc, XPathConstants.NODESET);  // "//Implies[head/Atom/op/Rel[text()=\"" + relation + "\"]]/body//slot/Ind[not(contains(string-join(ancestor::Implies/head//Var/text(),','),../Var/text()))]/@uri"
+                        for (int i = 0; i < nodelist.getLength(); i++) {
+                            String factWithNamespace = nodelist.item(i).getTextContent();
+                            String factName = factWithNamespace.substring(EnvironmentProperties.rdf_namespace_prefix.length());
+                            for (int j = 0; j < exercise.getSteps().size(); j++) {
+                                Step step = exercise.getSteps().get(j);
+                                // System.out.println("factName=" + factName + ", step.getRuleFact()=" + step.getRuleFact());
+                                if (step.getRuleFact() != null && step.getRuleFact().equals(factName)) {
+                                    retVal.put(relation.getName(), j);
+                                }
+                            }
                         }
-                    }
-                    if (!confirmedPremise) {
-                        allPremisesConfirmed = false;
-                    }
-                }
-                if (confirmedHead && allPremisesConfirmed && imp.getBodyRelations().size() > 0) {  // should be drawn
-                    if (!createdElements.containsKey(imp.getId())) {
-                        createdElements.put(imp.getId(), graph.insertVertex(parent, null, imp.getId(), 20, 20, 120, 40, "shape=ellipse"));
-                    }
-                    if (!createdElements.containsKey(imp.getHeadRelation())) {
-                        createdElements.put(imp.getHeadRelation(), graph.insertVertex(parent, null, imp.getHeadRelation(), 20, 20, 120, 30));
-                    }
-                    graph.insertEdge(parent, null, "", createdElements.get(imp.getId()), createdElements.get(imp.getHeadRelation()));
-                    for (String premise : imp.getBodyRelations()) {
-                        if (!createdElements.containsKey(premise)) {
-                            createdElements.put(premise, graph.insertVertex(parent, null, premise, 20, 20, 120, 30));
-                        }
-                        if (!createdElements.containsKey(imp.getId())) {
-                            createdElements.put(imp.getId(), graph.insertVertex(parent, null, imp.getId(), 20, 20, 120, 40, "shape=ellipse"));
-                        }
-                        graph.insertEdge(parent, null, "", createdElements.get(premise), createdElements.get(imp.getId()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
             }
-            mxHierarchicalLayout layout = new mxHierarchicalLayout(graph);
-            layout.setOrientation(SwingConstants.WEST);
-            layout.execute(parent);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            graph.getModel().endUpdate();
         }
+        return retVal;
+    }
 
-        mxGraphComponent graphComponent = new mxGraphComponent(graph);
-        BufferedImage image = null;
-        try {
-            image = mxCellRenderer.createBufferedImage(graphComponent.getGraph(), null, 1, Color.WHITE, graphComponent.isAntiAlias(), null); // , graphComponent.getCanvas());
-        } catch (Exception e) {
-            e.printStackTrace();
+    public static String localizeGraph(String graphString, String language) {
+        HashMap<String,HashMap<String,String>> rulebaseLabels = RulebaseUtil.getRulebaseLabels();
+        for (String key: rulebaseLabels.get(language).keySet()) {
+            graphString = graphString.replaceAll(key, rulebaseLabels.get(language).get(key));
         }
-        return image;
+        return graphString;
     }
     
+    @Deprecated
     public static void buildArgumentGraph() {
         System.out.println("Generating argument graph...");
         try {
@@ -110,46 +196,5 @@ public class ArgumentGraphUtil {
     }
     
     
-    
-    
-    public static void main(String[] args) {
-        EnvironmentProperties.input_folder = "src\\main\\resources\\input\\";
-        EnvironmentProperties.proof_filename = "proof.ruleml";
-        EnvironmentProperties.result_filename = "export.rdf";
-        EnvironmentProperties.reasoner_path = "f:\\temp\\legalruleml\\reasoner\\";
-        EnvironmentProperties.rulebase_filename = "rulebase.ruleml";
-        EnvironmentProperties.clipsdos_filename = EnvironmentProperties.reasoner_path + "clipsdos\\clipsdos.exe";
-        EnvironmentProperties.clipsdos32_filename = EnvironmentProperties.reasoner_path + "clipsdos\\clipsdos32.exe";
-        EnvironmentProperties.clipsdos64_filename = EnvironmentProperties.reasoner_path + "clipsdos\\clipsdos64.exe";
-        EnvironmentProperties.start_reasoner_command = "start.bat";
-
-        Exercise exercise = Exercise.load("exercise_art297para2.xml");
-        /*
-        for (Step step: exercise.getSteps()) {
-            step.setAnswer(readValue(step.getText()));
-        }
-*/
-        BufferedImage image = buildArgumentGraph(exercise);
-        File outputfile = new File(EnvironmentProperties.reasoner_path +  "argument_graph.png");
-        try {
-            ImageIO.write(image, "png", outputfile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    	private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-	public static String readValue(String prompt) {
-		String retVal = "";
-		System.out.print(prompt + ": ");
-		try {
-			retVal = bufferedReader.readLine();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return retVal;
-	}
-
 
 }

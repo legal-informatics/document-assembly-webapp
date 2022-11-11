@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Exercise name="Art 246 of Criminal Code (narcotics)" rulebaseGoal="committed_art246para1" templateFilename="indictment_art246.tsl">
+<Exercise name="Art. 246 of Criminal Code (narcotic abuse)" rulebaseGoal="committed_art246para1" templateFilename="indictment_art246.tsl">
     <RuleFacts>
         <RuleFact name="defendant" type="string"/>
         <RuleFact name="substance" type="string"/>

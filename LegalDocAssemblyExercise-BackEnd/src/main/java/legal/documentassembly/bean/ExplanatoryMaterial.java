@@ -1,5 +1,6 @@
 package legal.documentassembly.bean;
 
+import java.io.File;
 import java.io.FileReader;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -44,7 +45,7 @@ public class ExplanatoryMaterial {
         try {
             JAXBContext context = JAXBContext.newInstance(ExplanatoryMaterial.class);
             Unmarshaller um = context.createUnmarshaller();
-            explanatoryMaterial = (ExplanatoryMaterial) um.unmarshal(new FileReader(EnvironmentProperties.input_folder + filename));
+            explanatoryMaterial = (ExplanatoryMaterial) um.unmarshal(new File(EnvironmentProperties.input_folder + filename));
         } catch (Exception e) {
             e.printStackTrace();
         }
